@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Gabriel Lima</title>
+ 
+  <script src="https://cdn.tailwindcss.com"></script>>  <!-- Tailwind CSS via CDN -->
+  <link rel="stylesheet" href="style.css"> <!-- CSS person-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Ícones do Font Awesome para redes sociais -->
+</head>inza-esc
+<body class="fundo-cinza texto-curo">
+    <!-- Barra lateral fixa -->
+    <aside class="barra-lateral ">
+      <!-- Foto de perfil -->
+      <img src="Imagens/Foto Perfil/FotoPerfil.webp" alt="Foto de perfil" class="foto-perfil">
+
+      <!-- Menu de navegação -->
+      <nav class="menu-navegacao ">
+        <a href="#home" class="link-menu">Home</a>
+        <a href="#sobre" class="link-menu">Sobre Mim</a>
+        <a href="#oque-faco" class="link-menu">O Que Eu Faço</a>
+        <a href="#projetos" class="link-menu">Projetos</a>
+        <a href="#conhecimentos" class="link-menu">Conhecimentos</a>
+        <a href="#contato" class="link-menu">Contato</a>
+      </nav>
+      <!-- Ícones sociais -->
+       <div style="flex:1"></div>
+      <div class="icones-sociais">
+        <a href="https://github.com/" class="icone-social" target="_blank"><i class="fab fa-github tamanho-icone"></i></a>
+        <a href="https://linkedin.com/" class="icone-social"target="_blank"><i class="fab fa-linkedin tamanho-icone"></i></a>
+        <a href="https://wa.me/" class="icone-social"target="_blank"><i class="fab fa-whatsapp tamanho-icone"></i></a>
+        <a href="mailto:seu@email.com"><i class="icone-social"target="_blank"><i class="fas fa-envelope tamanho-icone"></i></a>
+      </div>
+    </aside>
+  <!-- Adiciona margem à esquerda para não ficar atrás da barra lateral -->
+  <main class="espacamento-padrao margem-esquerda-barra">
+    <!-- Home e particulas -->
+    <section id="home" class="home-section">
+      <div id="particles-js"></div>
+      <div class="conteudo-home">
+        <h1 class="titulo-principal typing-effect">Olá, eu sou Gabriel Lima</h1>
+        <p class="subtitulo">Desenvolvedor Back-end | Banco de Dados</p>
+      </div>
+    </section>
+
+
+    <!-- Seção sobre mim -->
+    <section id="sobre" class="sobre-section">
+      <div class="seçao-titulo">
+        <h2 class="seçao-titulo-sobre">SOBRE MIM</h2>
+        <span class="seçao-sub-sobre">SOBRE</span>
+      </div>
+      <div class="card-atras-sobre">
+        <div class="formacao-sobre">
+          <div class="carrossel-container">
+            <!-- Slide 1: Apresentação -->
+            <div class="carrossel-sobre-slide carrossel-sobre-apresentacaoativo">
+              <div class="sobre-conteudo">
+                <p>Eu sou Gabriel Lima, entusiasta de tecnologia cursando Superior em Banco de Dados com foco em dados, gestão de sistemas e soluções inovadoras.</p>
+                <h3>Apresentação</h3>
+                <p>Cursando Superior em Banco de Dados, busco aprofundar meus conhecimentos na gestão e manipulação de dados, com ênfase em modelagem, administração de sistemas e otimização de consultas. Estou dedicado ao aprimoramento contínuo, com facilidade para trabalhar em equipe, comunicativo e sempre em busca de soluções práticas e eficientes que gerem valor em banco de dados, suporte técnico e análise de dados.</p>
+                <h3>Minha Jornada</h3>
+                <p>Comecei minha trajetória na tecnologia com entusiasmo, buscando aprender cada vez mais. Atualmente, curso Tecnólogo em Banco de Dados na Uninter, aprofundando conhecimentos em SQL, modelagem de dados, administração de sistemas e Business Intelligence. Concluí meu Técnico em Tecnologia da Informação pelo Senac, adquirindo experiência prática em hardware, redes, sistemas operacionais e suporte técnico. Meu objetivo é contribuir significativamente para o crescimento das empresas por meio da gestão eficiente de dados, resolução de problemas e suporte técnico especializado.</p>
+                <h3>Competências</h3>
+                <ul class="lista-competencia">
+                  <li>Modelagem e administração de banco de dados</li>
+                  <li>SQL avançado e otimização de consultas</li>
+                  <li>Suporte técnico e troubleshooting</li>
+                  <li>Business Intelligence e Data Warehousing</li>
+                  <li>Trabalho em equipe e comunicação</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Slide 2: Formação e Certificações -->
+            <div class="carrossel-sobre-slide carrossel-sobre-educacao">
+              <h2>Formação Acadêmica</h2>
+              <div class="card-formacao">
+                <h3 class="titulo-formacao">Tecnólogo em Banco de Dados</h3>
+                <strong>Uninter</strong><br>
+                <span>2025 - Presente</span>
+                <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
+              </div>
+              <di v class="card-formacao">
+                <h3 class="titulo-formacao">Técnico em Informática</h3>
+                <strong>Senac</strong><br>
+                <span>Concluído</span>
+                <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
+              </div>
+              <h2>Certificações e Cursos</h2>
+              <div class="card-formacao">
+                <h3 class="titulo-formacao">Curso Completo em Banco de Dados</h3>
+                <strong>Udemy</strong><br>
+                <span>60 Horas</span>
+                <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
+              </div>
+              <div class="card-formacao">
+                <h3 class="titulo-formacao">Inglês Básico ao Avançado</h3>
+                <strong>Uninter</strong><br>
+                <span>Em Progresso</span>
+                <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <button class="carrossel-sobre-botao" id="proximo">▶</button>
+        <button class="carrossel-sobre-botao" id="anterior">◀</button>
+    </section>
+
+    
+    <!-- Seção oque eu faco -->
+    <section>
+      <div class="seçao-titulo">
+        <h2 class="seçao-titulo-oque-faco">O QUE EU FAÇO</h2>
+        <span class="seçao-sub-oque-faco">SERVIÇOS</span>
+      </div class="oque-faco-section" id="oque-faco">
+      <div class="card-atras-servicos">
+        <div class="container-botoes-oque-faco">
+          <button class="botao-oque-faco">Desenvolvimento Backend &gt;</button>
+          <button class="botao-oque-faco">Gerenciamento de Bancos de Dados (SQL/NoSQL) &gt;</button>
+          <button class="botao-oque-faco">Integração de APIs &gt;</button>
+          <button class="botao-oque-faco">Desenvolvimento Frontend Básico &gt;</button>
+        </div>
+        <!-- Modal oculto para sessao dos servicos-->
+        <div class="tela-cada-servico" id="tela-cada-servico" style="display: none;">
+          <div class="modal-backdrop"></div>
+          <div class="tela-conteudo-servico" id="tela-conteudo-servico">
+            <span class="tela-fechar-servico" id="tela-fechar-servico">&times;</span>
+            <p id="modal-texto">Aqui vai o texto do serviço.</p>
+          </div>
+        </div>
+     </section>
+
+
+    <!-- Seção de projetos -->
+    <section>
+      <div class="seçao-titulo">
+        <h2 class="seçao-titulo-projetos">PROJETOS</h2>
+        <span class="seçao-sub-projetos">PROJETOS</span>
+    </section>
+
+
+    <!-- Seção de conhecimentos -->
+    <section>
+      <div class="seçao-titulo">
+        <h2 class="seçao-titulo-conhecimentos">CONHECIMENTOS</h2>
+        <span class="seçao-sub-conhecimentos">CONHECIMENTOS</span>
+    </section>
+
+
+    <!-- Seção para entrar em contato -->    
+    <section>
+      <div class="seçao-titulo">
+        <h2 class="seçao-titulo-contato">CONTATO</h2>
+        <span class="seçao-sub-contato">CONTATO</span>
+    </section>
+
+
+  </main>
+
+
+
+  <!-- Rodapé do site -->
+  <!-- <footer class="footer margem-esquerda-barra">
+    &copy; 2026 Gabriel Lima
+  </footer> -->
+  
+  <!-- efeito de particulas -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <!-- Importa o JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
