@@ -303,6 +303,8 @@ body::-webkit-scrollbar {
 }
 
 .sobre-conteudo {
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
   background: #1f1f1f;
   color: #fff;
   border-radius: 22px;
@@ -344,7 +346,7 @@ body::-webkit-scrollbar {
 
 .card-atras-sobre  {
   margin-top: -2rem;
-  background: #232323;
+  background: #2c2c2c;
   border-radius: 25px;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,0.35);
   max-width: 1150px;
@@ -427,7 +429,7 @@ body::-webkit-scrollbar {
 
 .card-atras-servicos  {
   margin-top: -2rem;
-  background: #232323;
+  background: #2c2c2c;
   border-radius: 25px;
   padding: 1rem 1rem;
   transition: box-shadow 0.9s, transform 0.9s cubic-bezier(.77,0,.18,1);
@@ -447,7 +449,7 @@ body::-webkit-scrollbar {
 
 /* Container dos botões */
 .container-botoes-oque-faco {
-  background: #232323;
+  background: #1f1f1f;
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.2);
@@ -479,7 +481,7 @@ body::-webkit-scrollbar {
   transform: scale(1.03);
 }
 
-
+/*configuracao segunda tela de servicos*/
 .tela-cada-servico {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -489,26 +491,35 @@ body::-webkit-scrollbar {
   justify-content: center;
   z-index: 1000;
 }
-.modal-backdrop {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(20,20,20,0.6);
-  backdrop-filter: blur(6px);
-  z-index: 1;
-}
+
 .tela-conteudo-servico {
   position: relative;
   background: #232323;
   color: #fff;
   border-radius: 1.2rem;
-  padding: 2rem 2.5rem;
+  padding: 1.2rem 1.2rem;
   z-index: 2;
   min-width: 320px;
-  max-width: 90vw;
+  max-width: 45vw;
   box-shadow: 0 8px 32px rgba(80,0,160,0.15);
   text-align: center;
+  border: 1.5px solid #a78bfa;
+  box-shadow: 0 0 #a78bfa, 0 3px 21px rgba(80,0,160,0.15);
+  opacity: 0;
+  transform: translateX(100%) scale(0.95);
+  transition: opacity 0.9s, transform 0.9s cubic-bezier(.77,0,.18,1);
 }
+
+.tela-conteudo-servico.ativo {
+  opacity: 1;
+  transform: translateX(0) scale(1.05);
+}
+
+.tela-conteudo-servico.saindo {
+  opacity: 0;
+  transform: translateX(-100%) scale(0.85);
+}
+
 .tela-fechar-servico {
   position: absolute;
   top: 1rem; right: 1.5rem;
@@ -520,6 +531,218 @@ body::-webkit-scrollbar {
 }
 .tela-fechar-servico:hover {
   color: #a78bfa;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.555);
+  backdrop-filter: blur(20px);
+  z-index: 1;
+}
+
+#modal-titulo {
+  font-family:inherit;
+  color: #a78bfa;
+  font-size:2.3rem;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+ #modal-texto {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+ }
+
+/*_____________________________________________________________________________________________________________*/
+/*Conteudos da secao dos meus conhecimentos*/
+.icone-conhecimento {
+  color: #554780;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.titulo-conhecimento {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+}
+
+.barra-progresso {
+  width: 100%;
+  height: 10px;
+  background: #3f3f3f;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progresso {
+  height: 100%;
+  background: linear-gradient(90deg, #a78bfa 60%, #190931 100%);
+  border-radius: 8px;
+  transition: width 0.7s;
+}
+
+.grade-conhecimentos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  max-width: 900px;
+  margin: -0.5rem ;
+}
+
+.card-conhecimento {
+  position: relative;
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px 0 rgba(80,0,160,0.10);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 220px;
+  min-height: 90px;
+  transition: box-shadow 0.9s;
+}
+
+.card-conhecimento.ativo {
+  border: 2px solid #a78bfa;
+  transform: scale(1.22);
+  cursor: pointer;
+  z-index: 10001;
+  box-shadow: 0 0 2px 2px #a78bfa, 0 8px 32px rgba(80,0,160,0.15);
+  position: relative;
+}
+
+.card-conhecimentos{
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  background: #2c2c2c;
+  border-radius: 22px;
+  padding: 1rem 1rem;
+  margin: 0 auto;
+  max-width: 1100px;
+  width: 920px;
+  height: 640px;;
+}
+
+.card-atras-conhecimentos {
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  background: #1f1f1f;
+  border-radius: 22px;
+  padding: 2rem 1.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 890px;
+  height: 610px;;
+}
+
+
+/*janelas de cada habilidade*/
+.janela-conhecimento {
+  display: none;
+  position: absolute;
+  transform: translate(-50%);
+  min-width: 450px;
+  max-width: 500vw;
+  background: #232323;
+  color: #fff;
+  border-radius: 1.2rem;
+  padding: 1rem 1.5rem;
+  z-index: 10000;
+  box-shadow: 0 0 4px 1px #a78bfa, 0 3px 16px rgba(80,0,160,0.15);
+  text-align: center;
+  border: 2px solid #a78bfa;
+  animation: fadeInUp 0.9;
+}
+
+.janela-conhecimento.ativo {
+  display: block;
+  z-index: 10002;
+  position: absolute;
+  transform: scale(1.05);
+}
+
+.janela-conhecimento-html{
+  top: -10px;
+  left: 305px;
+}
+.janela-conhecimento-css{
+  top: -5px;
+  right: 305px;
+}
+.janela-conhecimento-js{
+  top: -15px;
+  right: 305px;
+}
+.janela-conhecimento-pyhton{
+  top: -15px;
+  left: 305px;
+}
+.janela-conhecimento-csharp{
+  top: -1px;
+  right: 305px;
+}
+.janela-conhecimento-java{
+  top: -1px;
+  right: 305px;
+}
+.janela-conhecimento-sql{
+  top: -5px;
+  left: 305px;
+}
+.janela-conhecimento-mysql{
+  top: -2px;
+  right: 305px;
+}
+.janela-conhecimento-postgresql{
+  top: -1px;
+  right: 305px;
+}
+.janela-conhecimento-mongodb{
+  top: 6px;
+  left: 305px;
+}
+.janela-conhecimento-nosql{
+  top: -1px;
+  right: 305px;
+}
+.janela-conhecimento-oracle{
+  top: -1px;
+  right: 305px;
+}
+
+
+/* Desfoque do fundo */
+.fundo-desfocado-conhecimento {
+  background: rgba(0, 0, 0, 0.479);
+  backdrop-filter: blur(25px);
+  z-index: 9999;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  display: none;
+  pointer-events: none; 
+}
+
+.fundo-desfocado-conhecimento.ativo {
+  display: block;
+}
+
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate(-50%, 10%) scale(0.95);}
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1);}
+}
+
+@keyframes fadeInSide {
+  from { opacity: 0; left: 95%; }
+  to   { opacity: 1; left: 105%; }
 }
 
 /*_____________________________________________________________________________________________________________*/

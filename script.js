@@ -146,17 +146,31 @@ document.getElementById('proximo').onclick = () => {
 mostrarSlide(slideAtual);
 
 //tela secundaria dos servicos
+
+const titulosServicos = [
+  "Desenvolvimento Backend",
+  "Gerenciamento de Bancos de Dados (SQL/NoSQL)",
+  "Integração de APIs",
+  "Desenvolvimento Frontend Básico"
+];
+
 const textosServicos = [
-  "Texto do serviço: Desenvolvimento Backend...",
-  "Texto do serviço: Gerenciamento de Bancos de Dados (SQL/NoSQL)...",
-  "Texto do serviço: Integração de APIs...",
-  "Texto do serviço: Desenvolvimento Frontend Básico..."
+  "No desenvolvimento backend, eu crio a lógica do servidor que alimenta aplicações web e mobile. Utilizo linguagens como Node.js, Python ou Java para construir sistemas robustos. Por exemplo, desenvolvo APIs RESTful ou GraphQL que integram com bancos de dados. Meu processo envolve entender as necessidades do cliente, projetar a arquitetura, implementar o código e testar para garantir performance. Alinhamos ideias através de reuniões iniciais, wireframes e iterações ágeis.",
+  "Especializado em bancos como SQL Server, MySQL e MongoDB, eu gerencio armazenamento de dados para sistemas integrados. Isso inclui modelagem de dados, otimização de queries e backups. Para lojas online, por exemplo, crio schemas que lidam com transações seguras. Alinho com o cliente definindo requisitos de dados, criando ERDs e implementando soluções escaláveis. ",
+  "Conecto sistemas através de APIs, permitindo comunicação entre serviços. Por exemplo, integro pagamentos ou autenticação externa. O processo inclui análise de endpoints, implementação de autenticação (OAuth/JWT) e testes de integração. Colaboramos para mapear fluxos de dados e garantir segurança.",
+  "Embora focado em backend, desenvolvo interfaces simples com HTML, CSS e JS. Crio sites responsivos para lojas ou dashboards. Alinho designs com o cliente via protótipos, implemento interações e integro com o backend."
 ];
 
 document.querySelectorAll('.botao-oque-faco').forEach((btn, idx) => {
   btn.addEventListener('click', () => {
-    document.querySelector('.tela-cada-servico').style.display = 'flex';
+    const modal = document.querySelector('.tela-cada-servico');
+    const conteudo = document.getElementById('tela-conteudo-servico');
+    modal.style.display = 'flex';
+    conteudo.classList.remove('saindo', 'ativo');
+    document.getElementById('modal-titulo').textContent = titulosServicos[idx];
     document.getElementById('modal-texto').textContent = textosServicos[idx];
+    void conteudo.offsetWidth;
+    conteudo.classList.add('ativo');
   });
 });
 
@@ -166,9 +180,46 @@ document.querySelector('.tela-cada-servico').onclick = function(e) {
 };
 
 function fecharModal() {
-  document.querySelector('.tela-cada-servico').style.display = 'none';
+  const modal = document.querySelector('.tela-cada-servico');
+  const conteudo = document.getElementById('tela-conteudo-servico');
+  conteudo.classList.remove('ativo');
+  conteudo.classList.add('saindo');
+  setTimeout(() => {
+    modal.style.display = 'none';
+    conteudo.classList.remove('saindo');
+  }, 500); 
 }
 
+// parte da regra de mouse em cima dos cards de conhecimento
+document.querySelectorAll('.card-conhecimento').forEach(card => {
+  // Pega a div da janela dentro do card (independente do nome da classe)
+  const janela = card.querySelector('div[class^="janela-conhecimento"]');
+  const fundo = document.getElementById('fundo-desfocado-conhecimento');
+
+  function mostrarJanela() {
+    if (fundo) fundo.classList.add('ativo');
+    if (janela) janela.classList.add('ativo');
+    card.classList.add('ativo');
+  }
+
+  function esconderJanela(e) {
+    if (
+      !card.contains(e.relatedTarget) &&
+      (!janela || !janela.contains(e.relatedTarget))
+    ) {
+      if (fundo) fundo.classList.remove('ativo');
+      if (janela) janela.classList.remove('ativo');
+      card.classList.remove('ativo');
+    }
+  }
+
+  card.addEventListener('mouseenter', mostrarJanela);
+  card.addEventListener('mouseleave', esconderJanela);
+
+  if (janela) {
+    janela.addEventListener('mouseleave', esconderJanela);
+  }
+});
 // Se o usuário já estiver fora da Home quando inicializar, pausa imediatamente.
 // if (homeSection) {
 //   const rect = homeSection.getBoundingClientRect();
