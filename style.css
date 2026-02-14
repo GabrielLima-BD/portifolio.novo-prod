@@ -4,6 +4,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /*esconde barra de rolagem vertical */
@@ -47,7 +48,6 @@ body::-webkit-scrollbar {
   letter-spacing: 0.2rem;
   z-index: 1;
 }
-
 
 /*_____________________________________________________________________________________________________________*/
 
@@ -297,7 +297,7 @@ body::-webkit-scrollbar {
   flex-direction: column;
   align-items: center;
   margin-top: 4rem;
-  padding: 2rem 0;
+  padding: 2rem ;
   background: #181818;
   min-height: 100vh;
 }
@@ -559,6 +559,92 @@ body::-webkit-scrollbar {
  }
 
 /*_____________________________________________________________________________________________________________*/
+/*Conteudos da secao dos meus projetos*/
+
+.projeto-card {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 0.5rem 0.1rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  background: #1f1f1f;
+  border-radius: 22px;
+  padding: 1rem 1rem;
+  max-width: 1500px;
+  width: 1790px;
+  min-height: 0px;
+}
+
+.projeto-card-atras {
+  top: -1.8rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  background: #2c2c2c;
+  border-radius: 22px;
+  padding: 1rem 1rem;
+  margin: 0 auto;
+  max-width: 1600px;
+  width: 1533px;
+  left: -12.5px;
+  position: relative;
+  justify-content: flex-end;
+}
+/*_________________________________________________________________*/
+/* confs gerais de todos os cards */
+.projeto-store-powerbi,.projeto-sistema-biblioteca,.projeto-detect-fraud,
+.projeto-cafe-borcelles,.projeto-apicorreios,.projeto-sistema-shopee-telegram-bot,
+.projeto-linktree,.projeto-costureira {
+  width: 355px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #232323;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 0.3rem;
+  overflow: hidden;
+}
+
+.linha-projeto-store-powerbi,.linha-projeto-sistema-biblioteca,.linha-projeto-detect-fraud,
+.linha-projeto-cafe-borcelles,.linha-projeto-apicorreios,.linha-projeto-sistema-shopee-telegram-bot,
+.linha-projeto-linktree,.linha-projeto-costureira { 
+  position: relative;
+  width: 85%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #4f2cc9, #a259ff);
+  border-radius: 2px;
+  top: 4.5px;
+}
+
+.titulo-projeto-store-powerbi,.titulo-projeto-sistema-biblioteca,.titulo-projeto-detect-fraud,
+.titulo-projeto-cafe-borcelles,.titulo-projeto-apicorreios,.titulo-projeto-sistema-shopee-telegram-bot,
+.titulo-projeto-linktree,.titulo-projeto-costureira {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  height: 22px;
+  position: relative;
+  top: 2.5px;
+}
+
+.img-projeto-store-powerbi,.img-projeto-sistema-biblioteca,.img-projeto-detect-fraud,
+.img-projeto-cafe-borcelles,.img-projeto-apicorreios,.img-projeto-sistema-shopee-telegram-bot,
+.img-projeto-linktree,.img-projeto-costureira {
+  width: 100%;  
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px 12px 6px 6px;
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+/*_____________________________________________________________________________________________________________*/
 /*Conteudos da secao dos meus conhecimentos*/
 .icone-conhecimento {
   color: #554780;
@@ -583,7 +669,7 @@ body::-webkit-scrollbar {
 
 .progresso {
   height: 100%;
-  background: linear-gradient(90deg, #a78bfa 60%, #190931 100%);
+  background:  linear-gradient(90deg, #a78bfa 60%, #190931 100%);
   border-radius: 8px;
   transition: width 0.7s;
 }
@@ -635,7 +721,7 @@ body::-webkit-scrollbar {
   box-shadow: 0 4px 24px rgba(0,0,0,0.2);
   background: #1f1f1f;
   border-radius: 22px;
-  padding: 2rem 1.5rem;
+  padding: 1rem 1rem;
   margin: 0 auto;
   max-width: 1200px;
   width: 890px;
@@ -744,5 +830,109 @@ body::-webkit-scrollbar {
   from { opacity: 0; left: 95%; }
   to   { opacity: 1; left: 105%; }
 }
+
+/*_____________________________________________________________________________________________________________*/
+/*Conteudos da secao dos meus contatos*/
+
+.contato-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px #000a, 0 0 0 1px #222;
+  padding: 32px 24px;
+  max-width: 850px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.contato-card-atras{
+  background: #2c2c2c;
+  border-radius: 16px;
+  padding: 1rem 1rem;
+  max-width: 850px;  
+  position: relative;
+  justify-content: flex-end;
+  left: 360px;
+  top: -30px;
+  transition: box-shadow 0.9s, transform 0.9s cubic-bezier(.77,0,.18,1);
+}
+
+.contato-card-atras:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 18px 6px #2e2744, 
+    0 8px 32px 0 rgba(0,0,0,0.35); 
+}
+
+.contato-info {
+  margin-bottom: 24px;
+}
+
+.contato-info > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.contato-icone {
+  color: #a259ff;
+  font-size: 1.2em;
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  margin: 16px 0 24px 0;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #31145f, #3a2a50);
+  color: #fff;
+  border-radius: 32px;
+  font-weight: 600;
+  box-shadow: 0 0 12px 0 #a259ff55;
+  text-decoration: none;
+  transition: filter 0.2s;
+}
+.btn-whatsapp:hover {
+  filter: brightness(1.1) drop-shadow(0 0 8px #a259ff99);
+}
+
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contato-form input,
+.contato-form textarea {
+  background: #111114;
+  border: 1px solid #a259ff;
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.9s;
+}
+.contato-form input:focus,
+.contato-form textarea:focus {
+  border-color: #fff;
+}
+
+.contato-form button {
+  background: linear-gradient(90deg, #31145f, #3a2a50);
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+  padding: 14px 0;
+  font-weight: 700;
+  font-size: 1.1em;
+  cursor: pointer;
+  box-shadow: 0 0 12px 0 #a259ff55;
+  transition: filter 0.2s;
+}
+.contato-form button:hover {
+  filter: brightness(1.1) drop-shadow(0 0 8px #a259ff99);
+}
+
+
 
 /*_____________________________________________________________________________________________________________*/
