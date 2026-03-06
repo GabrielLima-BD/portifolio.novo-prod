@@ -369,6 +369,19 @@ const projetos = [
     data: "Feitor em 12/12//2025",
     linguagens: "HTML, CSS, JS, BICEP, NODE.JS, EXPRESS",
     github: "https://github.com/GabrielLima-BD/api.correios-prt"
+  },
+    {
+    titulo: "Sis. Biblioteca",
+    descricao:  "Correios Helper é uma aplicação web completa para consulta de CEP e simulação de frete premium, combinando frontend moderno com backend em Node.js/Express. O sistema integra a API ViaCEP e o SOAP dos Correios (CalcPrecoPrazo), oferecendo uma experiência visual refinada, responsiva e orientada a microinterações.A aplicação permite consultar endereços por CEP, simular fretes SEDEX e PAC entre dois CEPs, calcular valores e prazos automaticamente e destacar a melhor opção de envio. Possui histórico detalhado de consultas e simulações, exportação de resultados em CSV, modo escuro/claro, loaders animados e interface de alto padrão com foco em UX/UI.O backend atua como API e proxy, com fallback mock para simulação de frete quando o serviço dos Correios está indisponível, além de suporte a variáveis de ambiente, logs verbosos e boas práticas de segurança. O projeto conta ainda com infraestrutura pronta para Azure, deploy automatizado via GitHub Actions, e arquivos Bicep para provisionamento em produção.Desenvolvido como projeto de portfólio avançado, demonstra domínio em integrações externas, arquitetura backend, experiência do usuário, automação de deploy e preparação para ambientes reais de produção.",
+    imagens: [
+      "Imagens/ApiCorreios/ApiCorreios1.png",
+      "Imagens/ApiCorreios/ApiCorreios2.png",
+      "Imagens/ApiCorreios/ApiCorreios3.png",
+      "Imagens/ApiCorreios/ApiCorreios4.png"
+    ],
+    data: "Feitor em 12/12//2025",
+    linguagens: "HTML, CSS, JS, BICEP, NODE.JS, EXPRESS",
+    github: "https://github.com/GabrielLima-BD/api.correios-prt"
   }
 ];
 
