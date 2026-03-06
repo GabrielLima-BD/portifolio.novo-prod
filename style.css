@@ -107,13 +107,15 @@ body::-webkit-scrollbar {
 
 /* Foto de perfil redonda com borda roxa (tamanho fluido) */
 .foto-perfil {
-  width: var(--foto-size);
-  height: var(--foto-size);
-  border-radius: 999px;
+  width: min(40vw, 180px);
+  height: min(40vw, 180px);
+  overflow: hidden;
+  border-radius: 50%;
   border: 3.5px solid #8b5cf6;
   margin-bottom: clamp(1rem, 3vh, 2rem);
   object-fit: cover;
   transition: box-shadow 0.9s, transform 0.9s cubic-bezier(.77,0,.18,1);
+  display: block;
 }
 .foto-perfil:hover {
   transform: scale(1.08);

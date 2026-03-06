@@ -315,30 +315,27 @@ const projetos = [
       "Imagens/Dasboard Store/Dash PowerBi 2.png",
       "Imagens/Dasboard Store/Video Dash.mp4"
     ],
-    data: "Feito em 20/02/2026",
+    data: "Feito em 02/2026",
     linguagens: "Power BI, DAX, SQL",
     github: "https://github.com/GabrielLima-BD/store.powerbi-prt",
   },
   {
     titulo: "Sis. Biblioteca",
-    descricao: "Sistema completo para gerenciamento de biblioteca, cadastro de livros, usuários e empréstimos.",
+    descricao: "...",
     imagens: [
-      "Imagens/Fotos Capa Projetos/Bilioteca/capa-biblioteca.jpg",
-      "Imagens/Fotos Capa Projetos/Bilioteca/capa-biblioteca2.jpg"
+      "Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png"
     ],
-    data: "Feito em 2025",
-    linguagens: "HTML, CSS, JS, SQL",
-    github: "https://github.com/GabrielLima-BD/biblioteca",
-    site: "https://..."
+    data: "...",
+    linguagens: "..."
   },
   {
     titulo: "Project Fraud",
     descricao: "",
-    imagens: [],
-    data: "",
-    linguagens: "",
-    github: "",
-    site: ""
+    imagens: [
+      "Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png"
+    ],
+    data: "...",
+    linguagens: "..."
   },
   {
     titulo: "Cafe Borcelle",
@@ -352,7 +349,7 @@ const projetos = [
       "Imagens/Cafe Borcelles/Borcelles6.png",
       "Imagens/Cafe Borcelles/Borcelles7.png"
     ],
-    data: "Feitor em 10/08//2025",
+    data: "Feitor em 08/2025",
     linguagens: "HTML, CSS, JS",
     github: "https://github.com/GabrielLima-BD/cafeteria.borcelles-prt",
     site: "https://gabriellima-bd.github.io/cafeteria.borcelles-prt/"
@@ -366,22 +363,43 @@ const projetos = [
       "Imagens/ApiCorreios/ApiCorreios3.png",
       "Imagens/ApiCorreios/ApiCorreios4.png"
     ],
-    data: "Feitor em 12/12//2025",
+    data: "Feitor em 12/2025",
     linguagens: "HTML, CSS, JS, BICEP, NODE.JS, EXPRESS",
     github: "https://github.com/GabrielLima-BD/api.correios-prt"
   },
     {
-    titulo: "Sis. Biblioteca",
-    descricao:  "Correios Helper é uma aplicação web completa para consulta de CEP e simulação de frete premium, combinando frontend moderno com backend em Node.js/Express. O sistema integra a API ViaCEP e o SOAP dos Correios (CalcPrecoPrazo), oferecendo uma experiência visual refinada, responsiva e orientada a microinterações.A aplicação permite consultar endereços por CEP, simular fretes SEDEX e PAC entre dois CEPs, calcular valores e prazos automaticamente e destacar a melhor opção de envio. Possui histórico detalhado de consultas e simulações, exportação de resultados em CSV, modo escuro/claro, loaders animados e interface de alto padrão com foco em UX/UI.O backend atua como API e proxy, com fallback mock para simulação de frete quando o serviço dos Correios está indisponível, além de suporte a variáveis de ambiente, logs verbosos e boas práticas de segurança. O projeto conta ainda com infraestrutura pronta para Azure, deploy automatizado via GitHub Actions, e arquivos Bicep para provisionamento em produção.Desenvolvido como projeto de portfólio avançado, demonstra domínio em integrações externas, arquitetura backend, experiência do usuário, automação de deploy e preparação para ambientes reais de produção.",
+    titulo: "Sistema de Upscanling de Videos",
+    descricao:  "...",
     imagens: [
-      "Imagens/ApiCorreios/ApiCorreios1.png",
-      "Imagens/ApiCorreios/ApiCorreios2.png",
-      "Imagens/ApiCorreios/ApiCorreios3.png",
-      "Imagens/ApiCorreios/ApiCorreios4.png"
+      "Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png"
     ],
-    data: "Feitor em 12/12//2025",
-    linguagens: "HTML, CSS, JS, BICEP, NODE.JS, EXPRESS",
-    github: "https://github.com/GabrielLima-BD/api.correios-prt"
+    data: "...",
+    linguagens: "..."
+  },
+    {
+    titulo: "Linktree",
+    descricao:  "O Linktree é uma página web moderna criada para centralizar e destacar os principais links de portfólio, redes sociais e contato profissional. Com design responsivo, animações e alternância de tema claro/escuro, o projeto oferece uma experiência visual elegante e adaptável a qualquer dispositivo, permitindo fácil personalização dos links e integração de ícones e foto de perfil. O código é modular, utiliza HTML5, CSS3 e JavaScript, e está pronto para expansão, sendo ideal para profissionais que buscam consolidar sua presença digital de forma prática e sofisticada.",
+    imagens: [
+      "Imagens/Linktree/Linktree1.png",
+      "Imagens/Linktree/Linktree2.png",
+      "Imagens/Linktree/Linktree3.png",
+      "Imagens/Linktree/Linktree4.png",      
+    ],
+    data: "09/2025",
+    linguagens: "HTML, CSS, JS",
+    github: "https://github.com/GabrielLima-BD/linktree-prt?tab=readme-ov-file",
+    site: "https://gabriellima-bd.github.io/linktree-prt/"
+  },
+    {
+    titulo: "APP Para Costureira",
+    descricao:  "",
+    imagens: [
+      "Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png"    
+    ],
+    data: "...",
+    linguagens: "...",
+    github: "...",
+    site: "..."
   }
 ];
 
