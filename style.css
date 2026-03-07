@@ -30,7 +30,14 @@ body::-webkit-scrollbar {
 
   /* Padding vertical da sidebar */
   --side-pad-y: clamp(1rem, 3vh, 2rem);
+  
+  /* X negativo puxa para a esquerda, 0 mantém centro perfeito */
+  --home-offset-x: -30px;   /* ajuste sutil à ESQUERDA */
+  /* Y controla altura (negativo sobe, positivo desce) */
+  --home-offset-y: clamp(120px, -4vh, -8px)   /* você disse que queria mais baixo */
 }
+
+
 
 /* Espaçamento padrão para seções */
 .espacamento-padrao {
@@ -209,33 +216,72 @@ body::-webkit-scrollbar {
   position: absolute; top: 0; left: 0;
   width: 100%; height: 100%; z-index: 0;
 }
+
 .conteudo-home {
-  position: static; z-index: 2;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-start;
-  min-height: 100vh;
-  padding-top: 20rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;                 /* mantém o texto no centro */
+  gap: clamp(6px, 1.2vw, 12px);
+  padding-top: 0;
+  transform: translate(var(--home-offset-x), var(--home-offset-y));
+                         /* evita “pender” em telas muito largas */
+  width: 100%;
 }
+
+
 .home-section {
-  display: flex; flex-direction: column; text-align: center; position: relative;
-  width: calc(100vw - var(--sidebar-w));   /* antes: calc(100vw - 19rem) */
-  min-height: 100vh; overflow: hidden; margin-left: 0;
+  width: calc(100vw - var(--sidebar-w));
+  min-height: 100dvh;
+  margin-left: 0;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;                 /* centraliza X e Y */
+  padding-inline: clamp(12px, 2vw, 24px);
+  box-sizing: border-box;
 }
 
 /* Título principal */
 .titulo-principal {
-  font-family:'Times New Roman', Times, serif;
-  font-size: 4.7rem;
-  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5.2vw, 4.7rem);
+  line-height: 1.1;
+  letter-spacing: clamp(0.5px, 0.4vw, 3px);
+  margin: 0;
+  text-align: center;
 }
+
 /* Subtítulo */
 .subtitulo {
-  font-family:'Times New Roman', Times, serif;
-  font-size: 2.5rem;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: 600;
-  margin-bottom: 8px;
-  letter-spacing: 3.2px;
+  font-size: clamp(1rem, 2.6vw, 2.2rem);
+  letter-spacing: clamp(0.6px, 0.4vw, 3px);
+  margin: 0;
+  text-align: center;
 }
+
+/* Em telas muito pequenas, reduza discretamente o deslocamento e garanta leitura */
+@media (max-width: 768px) 
+{
+  :root {
+    --home-offset-x: clamp(0px, 0.4vw, 8px);
+    --home-offset-y: clamp(-24px, -3.5vh, -10px);
+  }
+}
+
+/* Ajuste fino para notebooks (~1366px)*/
+@media (max-width: 1400px) {
+  .conteudo-home {
+    transform: translate(
+      clamp(4px, 0.8vw, 10px),
+      clamp(-32px, -5vh, -14px)
+    );
+  }
+}
+
 
 /*_____________________________________________________________________________________________________________*/
 /* Conteúdos da Sessão Sobre Mim */
