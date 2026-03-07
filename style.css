@@ -34,7 +34,7 @@ body::-webkit-scrollbar {
   /* X negativo puxa para a esquerda, 0 mantém centro perfeito */
   --home-offset-x: -30px;   /* ajuste sutil à ESQUERDA */
   /* Y controla altura (negativo sobe, positivo desce) */
-  --home-offset-y: clamp(120px, -4vh, -8px)   /* você disse que queria mais baixo */
+  --home-offset-y: clamp(-60px, -4vh, -8px)   /* você disse que queria mais baixo */
 }
 
 
