@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Gabriel Lima</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>> <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS via CDN -->
     <link rel="stylesheet" href="style.css"> <!-- CSS person-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Ícones do Font Awesome para redes sociais -->
-  </head>inza-esc
+  </head>
 
   <body class="fundo-cinza texto-curo">
     <!-- Barra lateral fixa -->
@@ -51,34 +51,46 @@
         </div>
       </section>
 
-
-      <!-- Seção sobre mim -->
-      <section id="sobre" class="sobre-section">
+      <!-- Seção Sobre -->
+      <section id="sobre" class="secao-sobre" aria-labelledby="titulo-sobre">
+        <!-- Título no MESMO padrão global das outras seções -->
         <div class="seçao-titulo">
-          <h2 class="seçao-titulo-sobre">SOBRE MIM</h2>
+          <h2 id="titulo-sobre" class="seçao-titulo-sobre">SOBRE MIM</h2>
           <span class="seçao-sub-sobre">SOBRE</span>
         </div>
+
+        <!-- Cartão de trás (cinza claro) -->
         <div class="card-atras-sobre">
-          <div class="formacao-sobre">
-            <div class="carrossel-container">
-              <!-- Slide 1: Apresentação -->
-              <div class="carrossel-sobre-slide carrossel-sobre-apresentacaoativo">
+          <!-- Carrossel 2 slides -->
+          <div class="carrossel-sobre" role="region" aria-roledescription="carrossel" aria-label="Sobre mim">
+            <div class="trilho-carrossel">
+              <!-- SLIDE 1 — Apresentação (sempre inicia neste) -->
+              <section id="sobre-apresentacao" class="slide-sobre" aria-labelledby="slide-apresentacao-titulo">
+                <!-- Cartão interno (cinza escuro) com encaixe perfeito -->
                 <div class="sobre-conteudo">
-                  <p>Eu sou Gabriel Lima, entusiasta de tecnologia cursando Superior em Banco de Dados com foco em dados,
-                    gestão de sistemas e soluções inovadoras.</p>
-                  <h3>Apresentação</h3>
-                  <p>Cursando Superior em Banco de Dados, busco aprofundar meus conhecimentos na gestão e manipulação de
-                    dados, com ênfase em modelagem, administração de sistemas e otimização de consultas. Estou dedicado ao
+                  <p>
+                    Eu sou Gabriel Lima, entusiasta de tecnologia cursando Superior em Banco de Dados com foco em dados,
+                    gestão de sistemas e soluções inovadoras.
+                  </p>
+
+                  <h3 id="slide-apresentacao-titulo">Apresentação</h3>
+                  <p>
+                    Cursando Superior em Banco de Dados, busco aprofundar meus conhecimentos na gestão e manipulação de dados,
+                    com ênfase em modelagem, administração de sistemas e otimização de consultas. Estou dedicado ao
                     aprimoramento contínuo, com facilidade para trabalhar em equipe, comunicativo e sempre em busca de
                     soluções práticas e eficientes que gerem valor em banco de dados, suporte técnico e análise de dados.
                   </p>
+
                   <h3>Minha Jornada</h3>
-                  <p>Comecei minha trajetória na tecnologia com entusiasmo, buscando aprender cada vez mais. Atualmente,
+                  <p>
+                    Comecei minha trajetória na tecnologia com entusiasmo, buscando aprender cada vez mais. Atualmente,
                     curso Tecnólogo em Banco de Dados na Uninter, aprofundando conhecimentos em SQL, modelagem de dados,
                     administração de sistemas e Business Intelligence. Concluí meu Técnico em Tecnologia da Informação
-                    pelo Senac, adquirindo experiência prática em hardware, redes, sistemas operacionais e suporte
-                    técnico. Meu objetivo é contribuir significativamente para o crescimento das empresas por meio da
-                    gestão eficiente de dados, resolução de problemas e suporte técnico especializado.</p>
+                    pelo Senac, adquirindo experiência prática em hardware, redes, sistemas operacionais e suporte técnico.
+                    Meu objetivo é contribuir para o crescimento das empresas por meio da gestão eficiente de dados,
+                    resolução de problemas e suporte técnico especializado.
+                  </p>
+
                   <h3>Competências</h3>
                   <ul class="lista-competencia">
                     <li>Modelagem e administração de banco de dados</li>
@@ -88,43 +100,72 @@
                     <li>Trabalho em equipe e comunicação</li>
                   </ul>
                 </div>
-              </div>
-              <!-- Slide 2: Formação e Certificações -->
-              <div class="carrossel-sobre-slide carrossel-sobre-educacao">
-                <h2>Formação Acadêmica</h2>
-                <div class="card-formacao">
-                  <h3 class="titulo-formacao">Tecnólogo em Banco de Dados</h3>
-                  <strong>Uninter</strong><br>
-                  <span>2025 - Presente</span>
-                  <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
+              </section>
+
+              <!-- SLIDE 2 — Formação & Certificados -->
+              <section id="sobre-educacao" class="slide-sobre" aria-labelledby="slide-educacao-titulo">
+                <div class="sobre-educacao">
+                  <h3 id="slide-educacao-titulo">Formação Acadêmica</h3>
+
+                  <ul class="edu-list">
+                    <li class="card-formacao">
+                      <div class="edu-card">
+                        <h4 class="edu-card__title">Tecnólogo em Banco de Dados</h4>
+                        <div class="edu-card__org">Uninter</div>
+                        <div class="edu-card__time">2025 – Presente</div>
+                      </div>
+                    </li>
+
+                    <li class="card-formacao">
+                      <div class="edu-card">
+                        <h4 class="edu-card__title">Técnico em Informática</h4>
+                        <div class="edu-card__org">Senac</div>
+                        <div class="edu-card__time">Concluído</div>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <h3>Certificações e Cursos</h3>
+                  <ul class="edu-list">
+                    <li class="card-formacao">
+                      <div class="edu-card">
+                        <h4 class="edu-card__title">Curso Completo em Banco de Dados</h4>
+                        <div class="edu-card__org">Udemy</div>
+                        <div class="edu-card__time">60 horas</div>
+                      </div>
+                    </li>
+
+                    <li class="card-formacao">
+                      <div class="edu-card">
+                        <h4 class="edu-card__title">Inglês do Básico ao Avançado</h4>
+                        <div class="edu-card__org">Uninter</div>
+                        <div class="edu-card__time">Em progresso</div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-                <di v class="card-formacao">
-                  <h3 class="titulo-formacao">Técnico em Informática</h3>
-                  <strong>Senac</strong><br>
-                  <span>Concluído</span>
-                  <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
-              </div>
-              <h2>Certificações e Cursos</h2>
-              <div class="card-formacao">
-                <h3 class="titulo-formacao">Curso Completo em Banco de Dados</h3>
-                <strong>Udemy</strong><br>
-                <span>60 Horas</span>
-                <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
-              </div>
-              <div class="card-formacao">
-                <h3 class="titulo-formacao">Inglês Básico ao Avançado</h3>
-                <strong>Uninter</strong><br>
-                <span>Em Progresso</span>
-                <span class="icone-seta"><i class="fas fa-arrow-right"></i></span>
-              </div>
+              </section>
+            </div>
+
+            <!-- Abas / Botões (sem setas) -->
+            <div class="abas-carrossel" role="tablist" aria-label="Selecionar slide">
+              <a role="tab"
+                id="aba-apresentacao"
+                class="aba-carrossel"
+                href="#sobre-apresentacao"
+                aria-controls="sobre-apresentacao"
+                aria-selected="true">Apresentação</a>
+
+              <a role="tab"
+                id="aba-educacao"
+                class="aba-carrossel"
+                href="#sobre-educacao"
+                aria-controls="sobre-educacao"
+                aria-selected="false">Formação &amp; Certificados</a>
             </div>
           </div>
         </div>
-        </div>
-        <button class="carrossel-sobre-botao" id="proximo"></button>
-        <button class="carrossel-sobre-botao" id="anterior"></button>
       </section>
-
 
       <!-- Seção oque eu faco -->
       <section id="oque-faco">
@@ -445,6 +486,7 @@
         window.location.href = mailto;
       });
     </script>
+
     
     <div id="fundo-desfocado-conhecimento" class="fundo-desfocado-conhecimento"></div>
     <!-- efeito de particulas -->

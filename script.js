@@ -1,6 +1,6 @@
 // script.js
 // Mensagem de boas-vindas no console\
-console.log("Bem-vindo ao portfólio de Gabriel Lima!");
+console.log("Bem-vindo ao meu portfólio, me chamo Gabriel Lima!");
 
 // Seleciona todos os links do menu e todas as seções do conteúdo
 const links = document.querySelectorAll('.menu-navegacao .link-menu');
@@ -22,6 +22,143 @@ links.forEach(link => {
   });
 });
 }
+
+// secao sobre troca de slides
+/* ============================================================================
+   SEÇÃO SOBRE — Carrossel (somente abas)
+   - Apresentação SEMPRE primeiro
+   - 1 slide por vez
+   - Animação lateral 0.9s: atual sai para ESQ, novo entra pela DIR (mesmo tempo)
+   - Auto-troca a cada 60s; pausa em hover/aba oculta
+   ============================================================================ */
+
+(function () {
+  const AUTO_MS = 60_000; // 60s
+  const ANIM_MS = 900;    // 0.9s (mantém sincronizado com CSS via --sobre-anim-ms)
+
+  const SEL = {
+    carrossel: '.carrossel-sobre',
+    trilho: '.trilho-carrossel',
+    slides: '.slide-sobre',
+    abas:   '.abas-carrossel .aba-carrossel'
+  };
+
+  const $  = (s, ctx = document) => ctx.querySelector(s);
+  const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
+
+  function limparAnim(el){
+    if(!el) return;
+    el.classList.remove('entrar-da-direita','entrar-da-esquerda','sair-para-esquerda','sair-para-direita');
+  }
+  function mostrar(el){
+    if(!el) return;
+    el.style.display = 'block';
+    // força reflow p/ garantir início da animação
+    // eslint-disable-next-line no-unused-expressions
+    el.offsetHeight;
+    el.style.opacity = '1';
+  }
+  function ocultar(el){
+    if(!el) return;
+    el.style.opacity = '0';
+    setTimeout(()=>{ el.style.display = 'none'; }, ANIM_MS);
+  }
+  function marcarAba(abas, idAlvo){
+    abas.forEach(a => a.setAttribute('aria-selected', a.getAttribute('href') === `#${idAlvo}` ? 'true' : 'false'));
+  }
+
+  function trocar(atual, proximo, carrossel){
+    if(!proximo || atual === proximo) return;
+
+    limparAnim(atual); limparAnim(proximo);
+
+    // sincroniza duração com o CSS
+    carrossel.style.setProperty('--sobre-anim-ms', `${ANIM_MS}ms`);
+
+    // mostra o novo antes de animar
+    mostrar(proximo);
+
+    // regra fixa: o que está visível sai para a ESQUERDA; o novo entra pela DIREITA
+    if(atual) atual.classList.add('sair-para-esquerda');
+    proximo.classList.add('entrar-da-direita');
+
+    if(atual) setTimeout(()=>{ limparAnim(atual); ocultar(atual); }, ANIM_MS);
+    setTimeout(()=>{ limparAnim(proximo); }, ANIM_MS);
+  }
+
+  function iniciar(){
+    const carrossel = $(SEL.carrossel);
+    if(!carrossel) return;
+
+    const trilho  = $(SEL.trilho, carrossel);
+    const slides  = $$(SEL.slides, trilho);
+    const abas    = $$(SEL.abas, carrossel);
+    if(!trilho || slides.length < 1 || abas.length < 2) return;
+
+    // Desliga qualquer fallback CSS baseado em :target (se você tiver)
+    carrossel.classList.add('js-pronto');
+
+    // SEMPRE começa no primeiro (Apresentação), ignorando hash inicial
+    let iAtual = 0;
+    history.replaceState(null, '', `#${slides[0].id}`);
+
+    slides.forEach((s,i)=>{
+      if(i === iAtual){ mostrar(s); }
+      else { s.style.display='none'; s.style.opacity='0'; }
+    });
+    marcarAba(abas, slides[iAtual].id);
+
+    // Abas / botões
+    abas.forEach((aba, i)=>{
+      aba.addEventListener('click', (e)=>{
+        e.preventDefault();
+        if(i === iAtual) return;
+        trocar(slides[iAtual], slides[i], carrossel);
+        iAtual = i;
+        history.pushState(null, '', aba.getAttribute('href'));
+        marcarAba(abas, slides[iAtual].id);
+        reiniciarAuto();
+      });
+    });
+
+    // Mudança de hash externa (após o load)
+    window.addEventListener('hashchange', ()=>{
+      const id = location.hash.slice(1);
+      const idx = slides.findIndex(s => s.id === id);
+      if(idx < 0 || idx === iAtual) return;
+      trocar(slides[iAtual], slides[idx], carrossel);
+      iAtual = idx;
+      marcarAba(abas, slides[iAtual].id);
+      reiniciarAuto();
+    });
+
+    // Auto‑troca
+    let pausado = false;
+    let timer = null;
+
+    function passo(){
+      if(pausado) return;
+      const prox = (iAtual + 1) % slides.length;
+      trocar(slides[iAtual], slides[prox], carrossel);
+      iAtual = prox;
+      history.replaceState(null, '', `#${slides[iAtual].id}`);
+      marcarAba(abas, slides[iAtual].id);
+    }
+    function start(){ timer = setInterval(passo, AUTO_MS); }
+    function stop(){ clearInterval(timer); timer = null; }
+    function reiniciarAuto(){ stop(); start(); }
+
+    // Pausas
+    document.addEventListener('visibilitychange', ()=>{ pausado = document.hidden; });
+    carrossel.addEventListener('mouseenter', ()=>{ pausado = true; });
+    carrossel.addEventListener('mouseleave', ()=>{ pausado = false; });
+
+    start();
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar);
+  else iniciar();
+})();
 
 // Atualiza ao rolar a página
 window.addEventListener('scroll', atualizarLinkAtivo);
@@ -45,12 +182,12 @@ links.forEach(link => {
   });
 });
 
-// // Particles.js para fundo e home (adiado)
+// // Particles.js para fundo e home
 window.addEventListener('DOMContentLoaded', function() {
   if (window.particlesJS) {
     particlesJS('particles-js', {
       particles: {
-        number: { value: 95, density: { enable: true, value_area: 800 } },
+        number: { value: 200, density: { enable: true, value_area: 800 } },
         color: { value: '#FFFFFF' },
         shape: { type: 'circle' },
         opacity: { value: 0.5, random: true },
@@ -125,25 +262,55 @@ if (typingEl && subtituloEl) {
 }
 
 // carrosel slide pagina sobre
-const slides = document.querySelectorAll('.carrossel-sobre-slide');
-let slideAtual = 0;
+// Carrossel da seção Sobre
+const slidesSobre = document.querySelectorAll('.carrossel-sobre-slide');
+const btnProximo = document.getElementById('proximo');
+const btnAnterior = document.getElementById('anterior');
+let slideAtualSobre = 0;
+let timerSobre;
 
-function mostrarSlide(index) {
-  slides.forEach((slide, i) => {
+// Função para mostrar o slide correto
+function mostrarSlideSobre(index) {
+  slidesSobre.forEach((slide, i) => {
     slide.classList.toggle('ativo', i === index);
   });
+  slideAtualSobre = index;
 }
 
-document.getElementById('anterior').onclick = () => {
-  slideAtual = (slideAtual - 1 + slides.length) % slides.length;
-  mostrarSlide(slideAtual);
-};
-document.getElementById('proximo').onclick = () => {
-  slideAtual = (slideAtual + 1) % slides.length;
-  mostrarSlide(slideAtual);
-};
+// Próximo slide
+function proximoSlideSobre() {
+  mostrarSlideSobre((slideAtualSobre + 1) % slidesSobre.length);
+}
 
-mostrarSlide(slideAtual);
+// Slide anterior
+function anteriorSlideSobre() {
+  mostrarSlideSobre((slideAtualSobre - 1 + slidesSobre.length) % slidesSobre.length);
+}
+
+// Timer automático (troca a cada 7 segundos)
+function iniciarTimerSobre() {
+  timerSobre = setInterval(proximoSlideSobre, 7000);
+}
+function pararTimerSobre() {
+  clearInterval(timerSobre);
+}
+
+// Eventos dos botões
+if (btnProximo && btnAnterior) {
+  btnProximo.addEventListener('click', proximoSlideSobre);
+  btnAnterior.addEventListener('click', anteriorSlideSobre);
+}
+
+// Pausa o timer ao passar o mouse, volta ao sair
+const carrosselContainer = document.querySelector('.carrossel-container');
+if (carrosselContainer) {
+  carrosselContainer.addEventListener('mouseenter', pararTimerSobre);
+  carrosselContainer.addEventListener('mouseleave', iniciarTimerSobre);
+}
+
+// Inicializa
+mostrarSlideSobre(0);
+iniciarTimerSobre();
 
 //tela secundaria dos servicos
 
