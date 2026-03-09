@@ -6,35 +6,120 @@
   border-radius: 25px;
   padding: 1rem 1rem;
   transition: box-shadow 0.9s, transform 0.9s cubic-bezier(.77,0,.18,1);
-  height: 330px; width: 700px; position: relative; top: -1.5rem; margin: 0 auto;
+  height: 330px;
+  width: 700px;
+  position: relative;
+  top: -1.5rem;
+  margin: 0 auto;
 }
-.card-atras-servicos:hover { transform: scale(1.03); box-shadow: 0 0 18px 6px #2e2744, 0 8px 32px 0 rgba(0,0,0,0.35); }
+
+.card-atras-servicos:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 18px 6px #2e2744,
+              0 8px 32px 0 rgba(0,0,0,0.35);
+}
+
 .container-botoes-oque-faco {
-  background: #1f1f1f; padding: 1rem; border-radius: 1rem; box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-  margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem; width: 660px;
+  background: #1f1f1f;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 660px;
 }
+
 .botao-oque-faco {
-  width: 625px; background: #181818; color: #fff; font-size: 1.2rem; padding: 1rem; border: none;
-  border-radius: 0.7rem; text-align: center; cursor: pointer; transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  width: 625px;
+  background: #181818;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.botao-oque-faco:hover { background: #2a2a2a; box-shadow: 0 4px 16px rgba(80,0,160,0.15); transform: scale(1.03); }
-.tela-cada-servico { position: fixed; inset: 0; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; z-index: 1000; }
-.tela-conteudo-servico {
-  position: relative; background: #232323; color: #fff; border-radius: 1.2rem;
-  padding: 1.2rem 1.2rem; z-index: 2; min-width: 320px; max-width: 950px;
-  box-shadow: 0 8px 32px rgba(80,0,160,0.15); text-align: center; border: 1.5px solid #a78bfa;
-  box-shadow: 0 0 #a78bfa, 0 3px 21px rgba(80,0,160,0.15); opacity: 0; transform: translateX(100%) scale(0.95);
-  transition: opacity 0.9s, transform 0.9s cubic-bezier(.77,0,.18,1);
+
+.botao-oque-faco:hover {
+  background: #2a2a2a;
+  box-shadow: 0 4px 16px rgba(80,0,160,0.15);
+  transform: scale(1.03);
 }
-.tela-conteudo-servico.ativo { opacity: 1; transform: translateX(0) scale(1.05); }
-.tela-conteudo-servico.saindo { opacity: 0; transform: translateX(-100%) scale(0.85); }
-.tela-fechar-servico { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: #fff; cursor: pointer; z-index: 3; transition: color 0.2s; }
-.tela-fechar-servico:hover { color: #a78bfa; }
-.modal-backdrop { position: absolute; inset: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.555); backdrop-filter: blur(20px); z-index: 1; }
+
+.tela-cada-servico {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.tela-conteudo-servico {
+  position: relative;
+  background: #232323;
+  color: #fff;
+  border-radius: 1.2rem;
+  padding: 1.2rem 1.2rem;
+  z-index: 2;
+  min-width: 320px;
+  max-width: 950px;
+  box-shadow: 0 8px 32px rgba(80,0,160,0.15);
+  text-align: center;
+  border: 1.5px solid #a78bfa;
+  box-shadow: 0 0 #a78bfa,
+              0 3px 21px rgba(80,0,160,0.15);
+  opacity: 0;
+  transform: translateX(100%) scale(0.95);
+  transition: opacity 0.9s,
+              transform 0.9s cubic-bezier(.77,0,.18,1);
+}
+
+.tela-conteudo-servico.ativo {
+  opacity: 1;
+  transform: translateX(0) scale(1.05);
+}
+
+.tela-conteudo-servico.saindo {
+  opacity: 0;
+  transform: translateX(-100%) scale(0.85);
+}
+
+.tela-fechar-servico {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 3;
+  transition: color 0.2s;
+}
+
+.tela-fechar-servico:hover {
+  color: #a78bfa;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.555);
+  backdrop-filter: blur(20px);
+  z-index: 1;
+}
 
 /* Texto estilizado do modal de serviços */
-#modal-texto, .modal-texto-servico {
+#modal-texto,
+.modal-texto-servico {
   font-family: 'Georgia', 'Times New Roman', Times, serif;
   font-size: clamp(1rem, 1vw, 1rem);
   line-height: 1.2;
@@ -47,7 +132,8 @@
 }
 
 @media (max-width: 700px) {
-  #modal-texto, .modal-texto-servico {
+  #modal-texto,
+  .modal-texto-servico {
     font-size: 1.08rem;
     padding: 0.1em 0.1em 0.5em 0.1em;
   }

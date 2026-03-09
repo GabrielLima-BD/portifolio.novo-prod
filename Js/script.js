@@ -558,69 +558,88 @@ const closeModalProjetos = () => {
 // Dados dos projetos (mantidos)
 const projetos = [
   {
-    titulo: 'Store Power BI',
-    descricao: 'Projeto de Business Intelligence desenvolvido no Power BI...',
+    titulo: "Store Power BI",
+    descricao: "Projeto de Business Intelligence desenvolvido no Power BI a partir de dados transacionais de uma loja. O trabalho envolveu tratamento, limpeza e modelagem dos dados, aplicação de métricas e indicadores com DAX e construção de um modelo analítico voltado à análise de desempenho comercial. Foram criadas duas telas interativas com foco em KPIs estratégicos, como faturamento, volume de vendas, desempenho por produto e análise temporal, permitindo a identificação de padrões, tendências e oportunidades de melhoria no negócio. O projeto demonstra domínio de análise de dados, visualização, storytelling com dados e suporte à tomada de decisão baseada em dados.",
     imagens: [
-      'Imagens/Dasboard Store/Dash PowerBi 1.png',
-      'Imagens/Dasboard Store/Dash PowerBi 2.png',
-      'Imagens/Dasboard Store/Video Dash.mp4'
+      "Imagens/Dasboard Store/DashPowerBi1.png",
+      "Imagens/Dasboard Store/DashPowerBi2.png",
+      "Imagens/Dasboard Store/VideoDash.mp4"
     ],
-    data: 'Feito em 02/2026',
-    linguagens: 'Power BI, DAX, SQL',
-    github: 'https://github.com/GabrielLima-BD/store.powerbi-prt'
-  },
-  { titulo: 'Sis. Biblioteca', descricao: '...', imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'], data: '...', linguagens: '...' },
-  { titulo: 'Project Fraud',  descricao: '',     imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'], data: '...', linguagens: '...' },
-  {
-    titulo: 'Cafe Borcelle',
-    descricao: 'Borcelle La Café é um site premium para cafeteria...',
-    imagens: [
-      'Imagens/Cafe Borcelles/Borcelles1.png',
-      'Imagens/Cafe Borcelles/Borcelles2.png',
-      'Imagens/Cafe Borcelles/Borcelles3.png',
-      'Imagens/Cafe Borcelles/Borcelles4.png',
-      'Imagens/Cafe Borcelles/Borcelles5.png',
-      'Imagens/Cafe Borcelles/Borcelles6.png',
-      'Imagens/Cafe Borcelles/Borcelles7.png'
-    ],
-    data: 'Feitor em 08/2025',
-    linguagens: 'HTML, CSS, JS',
-    github: 'https://github.com/GabrielLima-BD/cafeteria.borcelles-prt',
-    site:   'https://gabriellima-bd.github.io/cafeteria.borcelles-prt/'
+    data: "Feito em 02/2026",
+    linguagens: "Power BI, DAX, SQL",
+    github: "https://github.com/GabrielLima-BD/store.powerbi-prt",
   },
   {
-    titulo: 'API Correios',
-    descricao: 'Correios Helper é uma aplicação web completa...',
-    imagens: [
-      'Imagens/ApiCorreios/ApiCorreios1.png',
-      'Imagens/ApiCorreios/ApiCorreios2.png',
-      'Imagens/ApiCorreios/ApiCorreios3.png',
-      'Imagens/ApiCorreios/ApiCorreios4.png'
-    ],
-    data: 'Feitor em 12/2025',
-    linguagens: 'HTML, CSS, JS, BICEP, NODE.JS, EXPRESS',
-    github: 'https://github.com/GabrielLima-BD/api.correios-prt'
-  },
-  {
-    titulo: 'Sistema de Upscanling de Videos',
+    titulo: 'Sis. Biblioteca',
     descricao: '...',
-    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
+    imagens: [
+      'Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'
+    ],
     data: '...',
     linguagens: '...'
   },
   {
-    titulo: 'Linktree',
-    descricao: 'O Linktree é uma página web moderna...',
+    titulo: 'Project Fraud',
+    descricao: '',
     imagens: [
-      'Imagens/Linktree/Linktree1.png',
-      'Imagens/Linktree/Linktree2.png',
-      'Imagens/Linktree/Linktree3.png',
-      'Imagens/Linktree/Linktree4.png'
+      'Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'
     ],
-    data: '09/2025',
-    linguagens: 'HTML, CSS, JS',
-    github: 'https://github.com/GabrielLima-BD/linktree-prt?tab=readme-ov-file',
-    site:   'https://gabriellima-bd.github.io/linktree-prt/'
+    data: '...', 
+    linguagens: '...'
+  },
+    {
+    titulo: "Cafe Borcelle",
+    descricao: "Borcelle La Café é um site premium para cafeteria desenvolvido com foco em UX/UI, performance e design responsivo. O projeto evolui um site estático para uma aplicação web moderna, incorporando sistema de e-commerce funcional, animações suaves e arquitetura frontend organizada.Conta com carrinho de compras persistente via localStorage, cálculo automático de valores, modal de checkout, formulários com validação em tempo real e feedback visual, além de suporte completo a acessibilidade e navegação por teclado. O layout utiliza CSS Grid e Flexbox, sistema de temas com variáveis CSS (dark/light) e tipografia premium.O projeto foi otimizado para alta performance, alcançando pontuação acima de 95 no Lighthouse, com carregamento rápido, lazy loading de imagens e boas práticas de SEO. Totalmente responsivo, segue abordagem mobile-first e oferece uma experiência consistente em diferentes dispositivos.Desenvolvido com HTML5, CSS3 e JavaScript moderno, o projeto demonstra domínio de JavaScript vanilla, arquitetura CSS profissional, atenção a detalhes visuais e foco em experiência do usuário, sendo uma peça completa e pronta para portfólio profissional.",
+    imagens: [
+      "Imagens/Cafe Borcelles/Borcelles1.png",
+      "Imagens/Cafe Borcelles/Borcelles2.png",
+      "Imagens/Cafe Borcelles/Borcelles3.png",
+      "Imagens/Cafe Borcelles/Borcelles4.png",
+      "Imagens/Cafe Borcelles/Borcelles5.png",
+      "Imagens/Cafe Borcelles/Borcelles6.png",
+      "Imagens/Cafe Borcelles/Borcelles7.png"
+    ],
+    data: "Feitor em 08/2025",
+    linguagens: "HTML, CSS, JS",
+    github: "https://github.com/GabrielLima-BD/cafeteria.borcelles-prt",
+    site: "https://gabriellima-bd.github.io/cafeteria.borcelles-prt/"
+  },
+  {
+    titulo: "API Correios",
+    descricao:  "Correios Helper é uma aplicação web completa para consulta de CEP e simulação de frete premium, combinando frontend moderno com backend em Node.js/Express. O sistema integra a API ViaCEP e o SOAP dos Correios (CalcPrecoPrazo), oferecendo uma experiência visual refinada, responsiva e orientada a microinterações.A aplicação permite consultar endereços por CEP, simular fretes SEDEX e PAC entre dois CEPs, calcular valores e prazos automaticamente e destacar a melhor opção de envio. Possui histórico detalhado de consultas e simulações, exportação de resultados em CSV, modo escuro/claro, loaders animados e interface de alto padrão com foco em UX/UI.O backend atua como API e proxy, com fallback mock para simulação de frete quando o serviço dos Correios está indisponível, além de suporte a variáveis de ambiente, logs verbosos e boas práticas de segurança. O projeto conta ainda com infraestrutura pronta para Azure, deploy automatizado via GitHub Actions, e arquivos Bicep para provisionamento em produção.Desenvolvido como projeto de portfólio avançado, demonstra domínio em integrações externas, arquitetura backend, experiência do usuário, automação de deploy e preparação para ambientes reais de produção.",
+    imagens: [
+      "Imagens/ApiCorreios/ApiCorreios1.png",
+      "Imagens/ApiCorreios/ApiCorreios2.png",
+      "Imagens/ApiCorreios/ApiCorreios3.png",
+      "Imagens/ApiCorreios/ApiCorreios4.png"
+    ],
+    data: "Feitor em 12/2025",
+    linguagens: "HTML, CSS, JS, BICEP, NODE.JS, EXPRESS",
+    github: "https://github.com/GabrielLima-BD/api.correios-prt"
+
+  },
+    {
+    titulo: 'App de Upscaling para Videos',
+    descricao: '',
+    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
+    data: '...',
+    linguagens: '...',
+    github: '...',
+    site:   '...'
+  },
+    {
+    titulo: "Linktree",
+    descricao:  "O Linktree é uma página web moderna criada para centralizar e destacar os principais links de portfólio, redes sociais e contato profissional. Com design responsivo, animações e alternância de tema claro/escuro, o projeto oferece uma experiência visual elegante e adaptável a qualquer dispositivo, permitindo fácil personalização dos links e integração de ícones e foto de perfil. O código é modular, utiliza HTML5, CSS3 e JavaScript, e está pronto para expansão, sendo ideal para profissionais que buscam consolidar sua presença digital de forma prática e sofisticada.",
+    imagens: [
+      "Imagens/Linktree/Linktree1.png",
+      "Imagens/Linktree/Linktree2.png",
+      "Imagens/Linktree/Linktree3.png",
+      "Imagens/Linktree/Linktree4.png",      
+    ],
+    data: "09/2025",
+    linguagens: "HTML, CSS, JS",
+    github: "https://github.com/GabrielLima-BD/linktree-prt?tab=readme-ov-file",
+    site: "https://gabriellima-bd.github.io/linktree-prt/"
   },
   {
     titulo: 'APP Para Costureira',
