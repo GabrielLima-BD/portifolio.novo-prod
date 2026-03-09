@@ -373,11 +373,96 @@ const titulosServicos = [
 ];
 
 const textosServicos = [
-  'No desenvolvimento backend, eu crio a lógica do servidor que alimenta aplicações web e mobile...',
-  'Especializado em bancos como SQL Server, MySQL e MongoDB, eu gerencio armazenamento de dados...',
-  'Conecto sistemas através de APIs, permitindo comunicação entre serviços...',
-  'Embora focado em backend, desenvolvo interfaces simples com HTML, CSS e JS...'
+  `
+Atuo no desenvolvimento de aplicações backend e serviços de processamento de dados, projetando sistemas responsáveis pela lógica de negócio, manipulação de informações e integração entre diferentes camadas de software.
+
+Minha experiência envolve principalmente o uso de Node.js, Python e C#, tecnologias que utilizo para desenvolver aplicações, automações, serviços de dados e ferramentas voltadas à manipulação e processamento de informações.
+
+No ecossistema Node.js, desenvolvo serviços backend e APIs responsáveis pela comunicação entre aplicações, gerenciamento de requisições e integração com bancos de dados.
+
+Com Python, desenvolvo aplicações, scripts de automação e pipelines de dados, utilizando bibliotecas voltadas para manipulação, tratamento e análise de grandes volumes de informação.
+
+Já com C#, aplico conceitos de programação orientada a objetos para desenvolvimento de aplicações estruturadas e organizadas.
+
+Durante o desenvolvimento, aplico boas práticas de engenharia de software como:
+
+- organização modular de código
+- separação de responsabilidades
+- tratamento de erros e validação de dados
+- padronização de estruturas de projeto
+- otimização de processamento e manipulação de dados
+
+Esse conjunto de práticas permite construir sistemas escaláveis, reutilizáveis e de fácil manutenção, preparados para lidar com diferentes tipos de aplicações e fluxos de dados.
+`,
+
+  `
+Possuo experiência na modelagem, manipulação e análise de dados em bancos relacionais, com foco na organização eficiente da informação e na construção de estruturas de dados confiáveis.
+
+Trabalho principalmente com PostgreSQL, utilizando SQL avançado para criação e manutenção de estruturas de banco de dados, incluindo:
+
+- modelagem relacional
+- criação de tabelas, índices e constraints
+- definição de relacionamentos entre entidades
+- otimização de consultas e desempenho
+- manipulação e transformação de grandes conjuntos de dados
+
+Também realizo processos de tratamento, consolidação e padronização de dados, frequentemente utilizando Python como ferramenta complementar para ETL, limpeza de dados e automação de manipulações em larga escala.
+
+Além disso, possuo familiaridade com arquiteturas NoSQL, compreendendo suas aplicações em cenários onde flexibilidade estrutural, escalabilidade horizontal e alto volume de dados são necessários.
+
+Para gerenciamento e integração de banco de dados em aplicações modernas, também utilizo plataformas como Supabase, que fornece uma infraestrutura baseada em PostgreSQL com recursos de autenticação, APIs automáticas e gerenciamento simplificado.
+`,
+
+  `
+Desenvolvo e integro sistemas através de APIs RESTful, permitindo a comunicação entre aplicações, serviços externos e plataformas de dados.
+
+Tenho experiência tanto na criação quanto no consumo de APIs, projetando endpoints estruturados, manipulando requisições HTTP e organizando respostas em formatos padronizados como JSON.
+
+Para isso utilizo tecnologias e bibliotecas como:
+
+- Node.js para construção de serviços e endpoints
+- Python para consumo de APIs, automações e pipelines de dados
+- bibliotecas de requisição HTTP como Axios, Fetch API e Requests
+
+Essas integrações são frequentemente utilizadas para:
+
+- consumo de dados externos
+- automação de fluxos de informação
+- sincronização entre sistemas
+- construção de pipelines de dados
+- integração entre aplicações backend e interfaces frontend
+
+Também aplico práticas como tratamento de erros, validação de dados recebidos e padronização de respostas, garantindo confiabilidade e estabilidade na comunicação entre sistemas.
+`,
+
+  `
+Também desenvolvo interfaces web voltadas à construção de aplicações modernas, priorizando usabilidade, organização estrutural e integração eficiente com serviços backend.
+
+Minha experiência envolve o desenvolvimento de interfaces utilizando as tecnologias fundamentais da web — HTML, CSS e JavaScript — aplicadas na construção de páginas dinâmicas, responsivas e estruturadas de acordo com boas práticas de desenvolvimento.
+
+No processo de desenvolvimento frontend, trabalho com conceitos como:
+
+- manipulação dinâmica do DOM
+- consumo e integração com APIs REST
+- renderização dinâmica de dados
+- estruturação semântica de interfaces
+- responsividade e adaptação para diferentes dispositivos
+
+Também aplico técnicas modernas de estilização utilizando CSS avançado, incluindo:
+
+- Flexbox e CSS Grid
+- organização modular de estilos
+- criação de layouts responsivos
+- animações e transições para melhorar a experiência do usuário
+
+Utilizando JavaScript, desenvolvo funcionalidades interativas e sistemas capazes de consumir dados de serviços externos, manipular informações em tempo real e atualizar elementos da interface de forma dinâmica.
+
+Essa abordagem permite construir interfaces que atuam como camada de apresentação para aplicações mais complexas, integrando dados provenientes de APIs, bancos de dados e serviços backend.
+
+Além da implementação técnica, também busco aplicar princípios de design moderno e organização visual, criando interfaces limpas, funcionais e alinhadas às práticas atuais do desenvolvimento web.
+`
 ];
+
 
 document.querySelectorAll('.botao-oque-faco').forEach((btn, idx) => {
   btn.addEventListener('click', () => {

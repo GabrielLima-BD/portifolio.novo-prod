@@ -1,0 +1,34 @@
+/* Configurações globais, resets, variáveis e utilitários */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+:root { scrollbar-gutter: stable both-edges; }
+html  { overflow-y: scroll; }
+body::-webkit-scrollbar { width: 0; background: transparent; }
+*, *::before, *::after { box-sizing: border-box; }
+img, video { max-width: 100%; height: auto; display: block; }
+:root {
+  --sidebar-w: clamp(240px, 18vw, 288px);
+  --foto-size: clamp(112px, 40%, 200px);
+  --menu-fs:  clamp(1rem, 1.4vw, 1.5rem);
+  --menu-gap: clamp(1rem, 2.2vh, 1.5rem);
+  --side-pad-y: clamp(1rem, 3vh, 2rem);
+  --content-gutter-x: clamp(12px, 2vw, 24px);
+  --home-offset-x: 0px;
+  --home-offset-y: clamp(-18px, -4vh, -8px);
+}
+body {
+  padding-left: calc(var(--sidebar-w) + var(--content-gutter-x));
+  padding-right: var(--content-gutter-x);
+}
+.margem-esquerda-barra { margin: 0 !important; padding: 0 !important; }
+.espacamento-padrao { padding: 16px; }
+.fundo-cinza   { background-color: #181818; }
+.texto-curo    { color: #ffffff; }
+.texto-branco  { color: #fff; }
+.centralizado  { text-align: center; }

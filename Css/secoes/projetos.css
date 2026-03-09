@@ -1,0 +1,104 @@
+/* SEÇÃO PROJETOS: cards, grid, modal de projetos */
+
+#projetos { width: 100%; }
+.projeto-card-atras {
+  top: -1.8rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  background: #2c2c2c;
+  border-radius: 22px;
+  padding: 1rem 1rem;
+  margin: 0 auto;
+  max-width: 1180px;
+  width: 100%;
+  margin-inline: auto;
+  position: relative;
+}
+.projeto-card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  background: #1f1f1f;
+  border-radius: 22px;
+  padding: 1.3rem 1.3rem;
+  max-width: 1140px;
+  width: 100%;
+  min-height: 0;
+  margin: 0 auto;
+}
+.projeto-store-powerbi, .projeto-sistema-biblioteca, .projeto-detect-fraud,
+.projeto-cafe-borcelles, .projeto-apicorreios, .projeto-sistema-shopee-telegram-bot,
+.projeto-linktree, .projeto-costureira {
+  width: 100%; height: auto; display: flex; flex-direction: column; align-items: center;
+  background: #232323; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 6px; overflow: hidden; position: relative; aspect-ratio: 16 / 10;
+}
+.linha-projeto-store-powerbi, .linha-projeto-sistema-biblioteca, .linha-projeto-detect-fraud,
+.linha-projeto-cafe-borcelles, .linha-projeto-apicorreios, .linha-projeto-sistema-shopee-telegram-bot,
+.linha-projeto-linktree, .linha-projeto-costureira {
+  position: relative; width: 85%; height: 2.5px;
+  background: linear-gradient(90deg, #4f2cc9, #a259ff); border-radius: 2px; top: 4.5px;
+}
+.titulo-projeto-store-powerbi, .titulo-projeto-sistema-biblioteca, .titulo-projeto-detect-fraud,
+.titulo-projeto-cafe-borcelles, .titulo-projeto-apicorreios, .titulo-projeto-sistema-shopee-telegram-bot,
+.titulo-projeto-linktree, .titulo-projeto-costureira {
+  font-family: Georgia, 'Times New Roman', Times, serif; color: #fff; font-size: 1.15rem; font-weight: bold;
+  text-align: center; margin: 0; height: 22px; position: relative; top: 2.5px;
+}
+.img-projeto-blur, .img-projeto-focada {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  transition: opacity 0.9s; object-fit: cover;
+}
+.img-projeto-focada { opacity: 0; }
+.projeto-store-powerbi:hover .img-projeto-focada,
+.projeto-sistema-biblioteca:hover .img-projeto-focada,
+.projeto-detect-fraud:hover .img-projeto-focada,
+.projeto-cafe-borcelles:hover .img-projeto-focada,
+.projeto-apicorreios:hover .img-projeto-focada,
+.projeto-sistema-shopee-telegram-bot:hover .img-projeto-focada,
+.projeto-linktree:hover .img-projeto-focada,
+.projeto-costureira:hover .img-projeto-focada { opacity: 1; }
+.projeto-store-powerbi:hover .img-projeto-blur,
+.projeto-sistema-biblioteca:hover .img-projeto-blur,
+.projeto-detect-fraud:hover .img-projeto-blur,
+.projeto-cafe-borcelles:hover .img-projeto-blur,
+.projeto-apicorreios:hover .img-projeto-blur,
+.projeto-sistema-shopee-telegram-bot:hover .img-projeto-blur,
+.projeto-linktree:hover .img-projeto-blur,
+.projeto-costureira:hover .img-projeto-blur { opacity: 0; }
+.link-projeto .projeto-store-powerbi:hover,
+.link-projeto .projeto-sistema-biblioteca:hover,
+.link-projeto .projeto-detect-fraud:hover,
+.link-projeto .projeto-cafe-borcelles:hover,
+.link-projeto .projeto-apicorreios:hover,
+.link-projeto .projeto-sistema-shopee-telegram-bot:hover,
+.link-projeto .projeto-linktree:hover,
+.link-projeto .projeto-costureira:hover {
+  box-shadow: 0 0 6px 6px #463870, 0 8px 32px 0 rgba(80,0,160,0.18);
+  transform: scale(1.015);
+  border: 0.5px solid #231c38;
+  transition: box-shadow 0.9s, transform 0.9s, border 0.9s;
+  cursor: pointer;
+  z-index: 2;
+}
+.link-projeto { text-decoration: none; color: inherit; }
+.segundatela-projetos { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 2000; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.55); }
+.segundatela-backdrop { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.55); z-index: 1; }
+.segundatela-conteudo {
+  position: relative; background: #232323; color: #fff; border-radius: 1.2rem;
+  padding: 2rem 2.5rem; z-index: 2; min-width: 600px; max-width: 900px;
+  box-shadow: 0 8px 32px rgba(80,0,160,0.15); margin: 0 auto; display: flex; flex-direction: column; align-items: center;
+}
+.segundatela-fechar { position: absolute; top: 1.2rem; right: 2rem; font-size: 1.2rem; color: #fff; cursor: pointer; z-index: 3; transition: color 0.2s; }
+.segundatela-fechar:hover { color: #a78bfa; }
+.segundatela-barralateral { display: flex; flex-direction: row; justify-content: flex-start; gap: 0.5rem; margin-bottom: 1.5rem; }
+.segundatela-carrossel { width: 100%; display: flex; justify-content: center; margin-bottom: 1rem; }
+.segundatela-carrossel-img { width: 100%; max-width: 700px; height: 360px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 12px 0 rgba(80,0,160,0.10); }
+.segundatela-infos { display: flex; flex-direction: column; justify-content: flex-start; gap: 0.7rem; min-width: 200px; }
+.segundatela-infos-row { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1rem; margin-top: 0.5rem; }
+.segundatela-infodata, .segundatela-linguagens { font-size: 1.1rem; color: #a78bfa; font-weight: 600; }
+.segundatela-links { display: flex; gap: 1.2rem; margin-top: 0.5rem; }
+.segundatela-links a { color: #fff; background: #4a0e83; padding: 0.4rem 1.1rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+.segundatela-links a:hover { background: #a78bfa; color: #232323; }
