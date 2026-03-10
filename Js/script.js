@@ -50,6 +50,21 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Corrige o scroll automático para a seção "sobre" ao carregar
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash === '#sobre' || window.location.hash === '#sobre-educacao') {
+    history.replaceState(null, '', window.location.pathname);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+});
+
+// Força sempre abrir na Home, removendo qualquer hash da URL ao carregar
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+});
 
 // ============================================================================
 // SEÇÃO SOBRE – Carrossel (2 slides, abas, animação com delay de entrada)
@@ -629,7 +644,7 @@ const projetos = [
   },
     {
     titulo: "Linktree",
-    descricao:  "O Linktree é uma página web moderna criada para centralizar e destacar os principais links de portfólio, redes sociais e contato profissional. Com design responsivo, animações e alternância de tema claro/escuro, o projeto oferece uma experiência visual elegante e adaptável a qualquer dispositivo, permitindo fácil personalização dos links e integração de ícones e foto de perfil. O código é modular, utiliza HTML5, CSS3 e JavaScript, e está pronto para expansão, sendo ideal para profissionais que buscam consolidar sua presença digital de forma prática e sofisticada.",
+    descricao:  "O Linktree é uma página web moderna criada para centralizar e destacar os principais links de portfólio, redes sociais e contato profissional. Com design responsivo, animações e alternância de tema claro/escuro, o projeto oferece uma experiência visual elegante e adaptável a qualquer dispositivo, permitindo fácil personalização dos links e integração de ícones e foto de perfil. O código é modular, utiliza HTML5, CSS3 e JavaScript, e está pronto para expansão, sendo ideal para profissionais que busquem consolidar sua presença digital de forma prática e sofisticada.",
     imagens: [
       "Imagens/Linktree/Linktree1.png",
       "Imagens/Linktree/Linktree2.png",
