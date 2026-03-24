@@ -18,11 +18,10 @@ function atualizarLinkAtivo() {
 
   for (let i = 0; i < secoes.length; i++) {
     const secaoTopo = secoes[i].getBoundingClientRect().top;
-    if (secaoTopo > 80) break; // 80px de tolerância do topo
+    if (secaoTopo > 80) break;
     indexAtivo = i;
   }
 
-  // Marca ativo pelo id da seção
   const idAtivo = secoes[indexAtivo]?.id;
   if (!idAtivo) return;
 
@@ -31,7 +30,6 @@ function atualizarLinkAtivo() {
   if (alvo) alvo.classList.add('link-ativo');
 }
 
-// Clique nos links do menu (feedback imediato)
 links.forEach((link) => {
   link.addEventListener('click', function () {
     links.forEach((l) => l.classList.remove('link-ativo'));
@@ -39,7 +37,6 @@ links.forEach((link) => {
   });
 });
 
-// Atualiza ao rolar e ao carregar
 window.addEventListener('scroll', atualizarLinkAtivo);
 window.addEventListener('DOMContentLoaded', () => {
   atualizarLinkAtivo();
@@ -50,7 +47,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Corrige o scroll automático para a seção "sobre" ao carregar
 window.addEventListener('DOMContentLoaded', () => {
   if (window.location.hash === '#sobre' || window.location.hash === '#sobre-educacao') {
     history.replaceState(null, '', window.location.pathname);
@@ -58,7 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Força sempre abrir na Home, removendo qualquer hash da URL ao carregar
 window.addEventListener('DOMContentLoaded', () => {
   if (window.location.hash) {
     history.replaceState(null, '', window.location.pathname);
@@ -67,8 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================================================
-// SEÇÃO SOBRE – Carrossel (2 slides, abas, animação com delay de entrada)
-// Mantido: AUTO_MS=60s, ANIM_MS=1400ms, saída e entrada com delay (50%)
+// SEÇÃO SOBRE – Carrossel
 // ============================================================================
 
 (function () {
@@ -79,8 +73,8 @@ window.addEventListener('DOMContentLoaded', () => {
     dots:   '.aba-carrossel',
   };
 
-  const AUTO_MS = 60_000; // 1 minuto
-  const ANIM_MS = 1400;   // 1.4s (fluido, como você definiu)
+  const AUTO_MS = 60_000;
+  const ANIM_MS = 1400;
 
   const CLS = {
     active:           'is-active',
@@ -107,8 +101,6 @@ window.addEventListener('DOMContentLoaded', () => {
   function safelyShow(el) {
     if (!el) return;
     el.style.display = 'block';
-    // força reflow para a animação/keyframes iniciar corretamente
-    // eslint-disable-next-line no-unused-expressions
     el.offsetHeight;
     el.style.opacity = '1';
   }
@@ -129,11 +121,9 @@ window.addEventListener('DOMContentLoaded', () => {
   function animateSwitch(current, next, direction) {
     if (current === next) return;
 
-    // Remove classes de animação
     if (current) clearAnimClasses(current);
     if (next)    clearAnimClasses(next);
 
-    // Slide que está saindo sempre anima para esquerda
     if (current) {
       current.classList.remove(CLS.active);
       current.style.display = 'block';
@@ -141,10 +131,8 @@ window.addEventListener('DOMContentLoaded', () => {
       current.classList.add('sair-para-esquerda');
     }
 
-    // Delay da entrada = metade do tempo total
     const entradaDelay = ANIM_MS * 0.5;
 
-    // Slide que está entrando sempre anima pela direita
     setTimeout(() => {
       if (next) {
         next.classList.add(CLS.active);
@@ -155,7 +143,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }, entradaDelay);
 
-    // Finaliza a saída só depois da entrada concluir
     setTimeout(() => {
       if (current) {
         clearAnimClasses(current);
@@ -173,20 +160,15 @@ window.addEventListener('DOMContentLoaded', () => {
     let slides   = $$(SELECTORS.slides, track);
     const dots   = $$(SELECTORS.dots,  carousel);
 
-    // Garante apenas dois slides (como no teu código)
     slides = slides.slice(0, 2);
     if (slides.length < 2) return;
 
-    // JS assume (desativa fallback :target)
     carousel.classList.add('js-ready');
-    // expõe duração ao CSS
     carousel.style.setProperty('--sobre-anim-ms', `${ANIM_MS}ms`);
 
-    // Sempre inicia no 0 (Apresentação)
     let currentIndex = 0;
     history.replaceState(null, '', `#${slides[0].id}`);
 
-    // Estado inicial
     slides.forEach((s, i) => {
       if (i === currentIndex) {
         s.classList.add(CLS.active);
@@ -199,7 +181,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     setDotActive(dots, slides[currentIndex].id);
 
-    // Abas
     dots.forEach((dot, i) => {
       dot.addEventListener('click', (ev) => {
         ev.preventDefault();
@@ -216,7 +197,6 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Hash externa pós-load
     window.addEventListener('hashchange', () => {
       const id = location.hash.slice(1);
       const i  = slides.findIndex((s) => s.id === id);
@@ -228,12 +208,10 @@ window.addEventListener('DOMContentLoaded', () => {
       restartAuto();
     });
 
-    // Auto-rotação
     function tick() {
       if (isPaused) return;
       const nextIndex = (currentIndex + 1) % slides.length;
-      const direction = 'forward';
-      animateSwitch(slides[currentIndex], slides[nextIndex], direction);
+      animateSwitch(slides[currentIndex], slides[nextIndex], 'forward');
       currentIndex = nextIndex;
       setDotActive(dots, slides[currentIndex].id);
     }
@@ -242,7 +220,6 @@ window.addEventListener('DOMContentLoaded', () => {
     function stopAuto()   { clearInterval(autoTimer); autoTimer = null; }
     function restartAuto(){ stopAuto(); startAuto(); }
 
-    // Pausas
     document.addEventListener('visibilitychange', () => { isPaused = document.hidden; });
     carousel.addEventListener('mouseenter', () => { isPaused = true;  });
     carousel.addEventListener('mouseleave', () => { isPaused = false; });
@@ -259,7 +236,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 // ============================================================================
-// PARTICLES (home) – mantém tua config
+// PARTICLES (home)
 // ============================================================================
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -286,7 +263,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 // ============================================================================
-// HOME – efeito de digitação (mantido)
+// HOME – efeito de digitação
 // ============================================================================
 
 const typingEl    = document.querySelector('.typing-effect');
@@ -298,7 +275,6 @@ if (typingEl && subtituloEl) {
   const textoSubtitulo= 'Desenvolvedor Back-end | Banco de Dados';
   let i = 0, j = 0;
 
-  // Esconde subtítulo até finalizar o título
   subtituloEl.style.visibility = 'hidden';
 
   typingEl.innerHTML = '<span class="typing-text"></span><span class="typing-cursor">|</span>';
@@ -340,7 +316,7 @@ if (typingEl && subtituloEl) {
 
 
 // ============================================================================
-// (LEGADO) Carrossel Sobre com setas (mantido desligado; só organiza)
+// (LEGADO) Carrossel Sobre com setas
 // ============================================================================
 
 const slidesSobre    = document.querySelectorAll('.carrossel-sobre-slide');
@@ -377,7 +353,7 @@ if (slidesSobre.length) {
 
 
 // ============================================================================
-// SERVIÇOS – modal (abre/fecha + animação)
+// SERVIÇOS – modal
 // ============================================================================
 
 const titulosServicos = [
@@ -388,96 +364,87 @@ const titulosServicos = [
 ];
 
 const textosServicos = [
-  `
-Atuo no desenvolvimento de aplicações backend e serviços de processamento de dados, projetando sistemas responsáveis pela lógica de negócio, manipulação de informações e integração entre diferentes camadas de software.
+  ` Atuo no desenvolvimento de aplicações backend e serviços de processamento de dados, projetando sistemas responsáveis pela lógica de negócio, manipulação de informações e integração entre diferentes camadas de software.
 
-Minha experiência envolve principalmente o uso de Node.js, Python e C#, tecnologias que utilizo para desenvolver aplicações, automações, serviços de dados e ferramentas voltadas à manipulação e processamento de informações.
+ Minha experiência envolve principalmente o uso de Node.js, Python e C#, tecnologias que utilizo para desenvolver aplicações, automações, serviços de dados e ferramentas voltadas à manipulação e processamento de informações.
 
-No ecossistema Node.js, desenvolvo serviços backend e APIs responsáveis pela comunicação entre aplicações, gerenciamento de requisições e integração com bancos de dados.
+ No ecossistema Node.js, desenvolvo serviços backend e APIs responsáveis pela comunicação entre aplicações, gerenciamento de requisições e integração com bancos de dados.
 
-Com Python, desenvolvo aplicações, scripts de automação e pipelines de dados, utilizando bibliotecas voltadas para manipulação, tratamento e análise de grandes volumes de informação.
+ Com Python, desenvolvo aplicações, scripts de automação e pipelines de dados, utilizando bibliotecas voltadas para manipulação, tratamento e análise de grandes volumes de informação.
 
-Já com C#, aplico conceitos de programação orientada a objetos para desenvolvimento de aplicações estruturadas e organizadas.
+ Já com C#, aplico conceitos de programação orientada a objetos para desenvolvimento de aplicações estruturadas e organizadas.
 
-Durante o desenvolvimento, aplico boas práticas de engenharia de software como:
+ Durante o desenvolvimento, aplico boas práticas de engenharia de software como:
 
-- organização modular de código
-- separação de responsabilidades
-- tratamento de erros e validação de dados
-- padronização de estruturas de projeto
-- otimização de processamento e manipulação de dados
+ - organização modular de código
+ - separação de responsabilidades
+ - tratamento de erros e validação de dados
+ - padronização de estruturas de projeto
+ - otimização de processamento e manipulação de dados
 
-Esse conjunto de práticas permite construir sistemas escaláveis, reutilizáveis e de fácil manutenção, preparados para lidar com diferentes tipos de aplicações e fluxos de dados.
-`,
+ Esse conjunto de práticas permite construir sistemas escaláveis, reutilizáveis e de fácil manutenção, preparados para lidar com diferentes tipos de aplicações e fluxos de dados. `,
 
-  `
-Possuo experiência na modelagem, manipulação e análise de dados em bancos relacionais, com foco na organização eficiente da informação e na construção de estruturas de dados confiáveis.
+  ` Possuo experiência na modelagem, manipulação e análise de dados em bancos relacionais, com foco na organização eficiente da informação e na construção de estruturas de dados confiáveis.
 
-Trabalho principalmente com PostgreSQL, utilizando SQL avançado para criação e manutenção de estruturas de banco de dados, incluindo:
+ Trabalho principalmente com PostgreSQL, utilizando SQL avançado para criação e manutenção de estruturas de banco de dados, incluindo:
 
-- modelagem relacional
-- criação de tabelas, índices e constraints
-- definição de relacionamentos entre entidades
-- otimização de consultas e desempenho
-- manipulação e transformação de grandes conjuntos de dados
+ - modelagem relacional
+ - criação de tabelas, índices e constraints
+ - definição de relacionamentos entre entidades
+ - otimização de consultas e desempenho
+ - manipulação e transformação de grandes conjuntos de dados
 
-Também realizo processos de tratamento, consolidação e padronização de dados, frequentemente utilizando Python como ferramenta complementar para ETL, limpeza de dados e automação de manipulações em larga escala.
+ Também realizo processos de tratamento, consolidação e padronização de dados, frequentemente utilizando Python como ferramenta complementar para ETL, limpeza de dados e automação de manipulações em larga escala.
 
-Além disso, possuo familiaridade com arquiteturas NoSQL, compreendendo suas aplicações em cenários onde flexibilidade estrutural, escalabilidade horizontal e alto volume de dados são necessários.
+ Além disso, possuo familiaridade com arquiteturas NoSQL, compreendendo suas aplicações em cenários onde flexibilidade estrutural, escalabilidade horizontal e alto volume de dados são necessários.
 
-Para gerenciamento e integração de banco de dados em aplicações modernas, também utilizo plataformas como Supabase, que fornece uma infraestrutura baseada em PostgreSQL com recursos de autenticação, APIs automáticas e gerenciamento simplificado.
-`,
+ Para gerenciamento e integração de banco de dados em aplicações modernas, também utilizo plataformas como Supabase, que fornece uma infraestrutura baseada em PostgreSQL com recursos de autenticação, APIs automáticas e gerenciamento simplificado. `,
 
-  `
-Desenvolvo e integro sistemas através de APIs RESTful, permitindo a comunicação entre aplicações, serviços externos e plataformas de dados.
+  ` Desenvolvo e integro sistemas através de APIs RESTful, permitindo a comunicação entre aplicações, serviços externos e plataformas de dados.
 
-Tenho experiência tanto na criação quanto no consumo de APIs, projetando endpoints estruturados, manipulando requisições HTTP e organizando respostas em formatos padronizados como JSON.
+ Tenho experiência tanto na criação quanto no consumo de APIs, projetando endpoints estruturados, manipulando requisições HTTP e organizando respostas em formatos padronizados como JSON.
 
-Para isso utilizo tecnologias e bibliotecas como:
+ Para isso utilizo tecnologias e bibliotecas como:
 
-- Node.js para construção de serviços e endpoints
-- Python para consumo de APIs, automações e pipelines de dados
-- bibliotecas de requisição HTTP como Axios, Fetch API e Requests
+ - Node.js para construção de serviços e endpoints
+ - Python para consumo de APIs, automações e pipelines de dados
+ - bibliotecas de requisição HTTP como Axios, Fetch API e Requests
 
-Essas integrações são frequentemente utilizadas para:
+ Essas integrações são frequentemente utilizadas para:
 
-- consumo de dados externos
-- automação de fluxos de informação
-- sincronização entre sistemas
-- construção de pipelines de dados
-- integração entre aplicações backend e interfaces frontend
+ - consumo de dados externos
+ - automação de fluxos de informação
+ - sincronização entre sistemas
+ - construção de pipelines de dados
+ - integração entre aplicações backend e interfaces frontend
 
-Também aplico práticas como tratamento de erros, validação de dados recebidos e padronização de respostas, garantindo confiabilidade e estabilidade na comunicação entre sistemas.
-`,
+ Também aplico práticas como tratamento de erros, validação de dados recebidos e padronização de respostas, garantindo confiabilidade e estabilidade na comunicação entre sistemas. `,
 
-  `
-Também desenvolvo interfaces web voltadas à construção de aplicações modernas, priorizando usabilidade, organização estrutural e integração eficiente com serviços backend.
+  ` Também desenvolvo interfaces web voltadas à construção de aplicações modernas, priorizando usabilidade, organização estrutural e integração eficiente com serviços backend.
 
-Minha experiência envolve o desenvolvimento de interfaces utilizando as tecnologias fundamentais da web — HTML, CSS e JavaScript — aplicadas na construção de páginas dinâmicas, responsivas e estruturadas de acordo com boas práticas de desenvolvimento.
+ Minha experiência envolve o desenvolvimento de interfaces utilizando as tecnologias fundamentais da web — HTML, CSS e JavaScript — aplicadas na construção de páginas dinâmicas, responsivas e estruturadas de acordo com boas práticas de desenvolvimento.
 
-No processo de desenvolvimento frontend, trabalho com conceitos como:
+ No processo de desenvolvimento frontend, trabalho com conceitos como:
 
-- manipulação dinâmica do DOM
-- consumo e integração com APIs REST
-- renderização dinâmica de dados
-- estruturação semântica de interfaces
-- responsividade e adaptação para diferentes dispositivos
+ - manipulação dinâmica do DOM
+ - consumo e integração com APIs REST
+ - renderização dinâmica de dados
+ - estruturação semântica de interfaces
+ - responsividade e adaptação para diferentes dispositivos
 
-Também aplico técnicas modernas de estilização utilizando CSS avançado, incluindo:
+ Também aplico técnicas modernas de estilização utilizando CSS avançado, incluindo:
 
-- Flexbox e CSS Grid
-- organização modular de estilos
-- criação de layouts responsivos
-- animações e transições para melhorar a experiência do usuário
+ - Flexbox e CSS Grid
+ - organização modular de estilos
+ - criação de layouts responsivos
+ - animações e transições para melhorar a experiência do usuário
 
-Utilizando JavaScript, desenvolvo funcionalidades interativas e sistemas capazes de consumir dados de serviços externos, manipular informações em tempo real e atualizar elementos da interface de forma dinâmica.
+ Utilizando JavaScript, desenvolvo funcionalidades interativas e sistemas capazes de consumir dados de serviços externos, manipular informações em tempo real e atualizar elementos da interface de forma dinâmica.
 
-Essa abordagem permite construir interfaces que atuam como camada de apresentação para aplicações mais complexas, integrando dados provenientes de APIs, bancos de dados e serviços backend.
+ Essa abordagem permite construir interfaces que atuam como camada de apresentação para aplicações mais complexas, integrando dados provenientes de APIs, bancos de dados e serviços backend.
 
-Além da implementação técnica, também busco aplicar princípios de design moderno e organização visual, criando interfaces limpas, funcionais e alinhadas às práticas atuais do desenvolvimento web.
-`
+ Além da implementação técnica, também busco aplicar princípios de design moderno e organização visual, criando interfaces limpas, funcionais e alinhadas às práticas atuais do desenvolvimento web. `
 ];
-
 
 document.querySelectorAll('.botao-oque-faco').forEach((btn, idx) => {
   btn.addEventListener('click', () => {
@@ -487,7 +454,7 @@ document.querySelectorAll('.botao-oque-faco').forEach((btn, idx) => {
     conteudo.classList.remove('saindo', 'ativo');
     document.getElementById('modal-titulo').textContent = titulosServicos[idx];
     document.getElementById('modal-texto').textContent  = textosServicos[idx];
-    void conteudo.offsetWidth; // reflow
+    void conteudo.offsetWidth;
     conteudo.classList.add('ativo');
   });
 });
@@ -570,15 +537,20 @@ const closeModalProjetos = () => {
   if (modal) modal.style.display = 'none';
 };
 
-// Dados dos projetos (mantidos)
 const projetos = [
   {
     titulo: "Store Power BI",
-    descricao: "Projeto de Business Intelligence desenvolvido no Power BI a partir de dados transacionais de uma loja. O trabalho envolveu tratamento, limpeza e modelagem dos dados, aplicação de métricas e indicadores com DAX e construção de um modelo analítico voltado à análise de desempenho comercial. Foram criadas duas telas interativas com foco em KPIs estratégicos, como faturamento, volume de vendas, desempenho por produto e análise temporal, permitindo a identificação de padrões, tendências e oportunidades de melhoria no negócio. O projeto demonstra domínio de análise de dados, visualização, storytelling com dados e suporte à tomada de decisão baseada em dados.",
+    descricao: `Projeto de Business Intelligence desenvolvido no Power BI a partir de dados transacionais de uma loja.
+
+O trabalho envolveu tratamento, limpeza e modelagem dos dados, aplicação de métricas e indicadores com DAX e construção de um modelo analítico voltado à análise de desempenho comercial.
+
+Foram criadas duas telas interativas com foco em KPIs estratégicos — faturamento, volume de vendas, desempenho por produto e análise temporal — permitindo a identificação de padrões, tendências e oportunidades de melhoria no negócio.
+
+O projeto demonstra domínio de análise de dados, visualização, storytelling com dados e suporte à tomada de decisão baseada em evidências.`,
     imagens: [
-      "Imagens/Dasboard Store/DashPowerBi1.png",
-      "Imagens/Dasboard Store/DashPowerBi2.png",
-      "Imagens/Dasboard Store/VideoDash.mp4"
+      "Imagens/Dashboard Store/DashPowerBi1.png",
+      "Imagens/Dashboard Store/DashPowerBi2.png",
+      "Imagens/Dashboard Store/VideoDash.mp4"
     ],
     data: "Feito em 02/2026",
     linguagens: "Power BI, DAX, SQL",
@@ -587,24 +559,26 @@ const projetos = [
   {
     titulo: 'Sis. Biblioteca',
     descricao: '...',
-    imagens: [
-      'Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'
-    ],
+    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
     data: '...',
     linguagens: '...'
   },
   {
     titulo: 'Project Fraud',
     descricao: '',
-    imagens: [
-      'Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'
-    ],
-    data: '...', 
+    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
+    data: '...',
     linguagens: '...'
   },
-    {
+  {
     titulo: "Cafe Borcelle",
-    descricao: "Borcelle La Café é um site premium para cafeteria desenvolvido com foco em UX/UI, performance e design responsivo. O projeto evolui um site estático para uma aplicação web moderna, incorporando sistema de e-commerce funcional, animações suaves e arquitetura frontend organizada.Conta com carrinho de compras persistente via localStorage, cálculo automático de valores, modal de checkout, formulários com validação em tempo real e feedback visual, além de suporte completo a acessibilidade e navegação por teclado. O layout utiliza CSS Grid e Flexbox, sistema de temas com variáveis CSS (dark/light) e tipografia premium.O projeto foi otimizado para alta performance, alcançando pontuação acima de 95 no Lighthouse, com carregamento rápido, lazy loading de imagens e boas práticas de SEO. Totalmente responsivo, segue abordagem mobile-first e oferece uma experiência consistente em diferentes dispositivos.Desenvolvido com HTML5, CSS3 e JavaScript moderno, o projeto demonstra domínio de JavaScript vanilla, arquitetura CSS profissional, atenção a detalhes visuais e foco em experiência do usuário, sendo uma peça completa e pronta para portfólio profissional.",
+    descricao: `Borcelle La Café é um site premium para cafeteria desenvolvido com foco em UX/UI, performance e design responsivo.
+
+O projeto evoluiu de um site estático para uma aplicação web moderna, incorporando sistema de e-commerce funcional, animações suaves e arquitetura frontend bem estruturada. Conta com carrinho de compras persistente via localStorage, cálculo automático de valores, modal de checkout, formulários com validação em tempo real e feedback visual, além de suporte completo a acessibilidade e navegação por teclado.
+
+O layout utiliza CSS Grid e Flexbox, sistema de temas com variáveis CSS (dark/light) e tipografia premium. A aplicação foi otimizada para alta performance, alcançando pontuação acima de 95 no Lighthouse, com carregamento rápido, lazy loading de imagens e boas práticas de SEO.
+
+Totalmente responsivo e com abordagem mobile-first, o projeto oferece uma experiência consistente em diferentes dispositivos. Desenvolvido com HTML5, CSS3 e JavaScript moderno, demonstra domínio de JavaScript vanilla, arquitetura CSS profissional e atenção minuciosa à experiência do usuário.`,
     imagens: [
       "Imagens/Cafe Borcelles/Borcelles1.png",
       "Imagens/Cafe Borcelles/Borcelles2.png",
@@ -614,42 +588,74 @@ const projetos = [
       "Imagens/Cafe Borcelles/Borcelles6.png",
       "Imagens/Cafe Borcelles/Borcelles7.png"
     ],
-    data: "Feitor em 08/2025",
+    data: "Feito em 08/2025",
     linguagens: "HTML, CSS, JS",
     github: "https://github.com/GabrielLima-BD/cafeteria.borcelles-prt",
     site: "https://gabriellima-bd.github.io/cafeteria.borcelles-prt/"
   },
   {
     titulo: "API Correios",
-    descricao:  "Correios Helper é uma aplicação web completa para consulta de CEP e simulação de frete premium, combinando frontend moderno com backend em Node.js/Express. O sistema integra a API ViaCEP e o SOAP dos Correios (CalcPrecoPrazo), oferecendo uma experiência visual refinada, responsiva e orientada a microinterações.A aplicação permite consultar endereços por CEP, simular fretes SEDEX e PAC entre dois CEPs, calcular valores e prazos automaticamente e destacar a melhor opção de envio. Possui histórico detalhado de consultas e simulações, exportação de resultados em CSV, modo escuro/claro, loaders animados e interface de alto padrão com foco em UX/UI.O backend atua como API e proxy, com fallback mock para simulação de frete quando o serviço dos Correios está indisponível, além de suporte a variáveis de ambiente, logs verbosos e boas práticas de segurança. O projeto conta ainda com infraestrutura pronta para Azure, deploy automatizado via GitHub Actions, e arquivos Bicep para provisionamento em produção.Desenvolvido como projeto de portfólio avançado, demonstra domínio em integrações externas, arquitetura backend, experiência do usuário, automação de deploy e preparação para ambientes reais de produção.",
+    descricao: `Correios Helper é uma aplicação web completa para consulta de CEP e simulação de frete premium, combinando frontend moderno com backend em Node.js/Express.
+
+O sistema integra a API ViaCEP e o SOAP dos Correios (CalcPrecoPrazo), oferecendo uma experiência visual refinada, responsiva e orientada a microinterações. A aplicação permite consultar endereços por CEP, simular fretes SEDEX e PAC entre dois CEPs, calcular valores e prazos automaticamente e destacar a melhor opção de envio. Conta ainda com histórico detalhado de consultas, exportação de resultados em CSV, modo escuro/claro, loaders animados e interface de alto padrão com foco em UX/UI.
+
+O backend atua como API e proxy, com fallback mock para simulação de frete quando o serviço dos Correios está indisponível, além de suporte a variáveis de ambiente, logs verbosos e boas práticas de segurança.
+
+O projeto conta com infraestrutura pronta para Azure, deploy automatizado via GitHub Actions e arquivos Bicep para provisionamento em produção. Demonstra domínio em integrações externas, arquitetura backend, automação de deploy e preparação para ambientes reais de produção.`,
     imagens: [
       "Imagens/ApiCorreios/ApiCorreios1.png",
       "Imagens/ApiCorreios/ApiCorreios2.png",
       "Imagens/ApiCorreios/ApiCorreios3.png",
       "Imagens/ApiCorreios/ApiCorreios4.png"
     ],
-    data: "Feitor em 12/2025",
+    data: "Feito em 12/2025",
     linguagens: "HTML, CSS, JS, BICEP, NODE.JS, EXPRESS",
     github: "https://github.com/GabrielLima-BD/api.correios-prt"
+  },
+  {
+    titulo: 'App de Upscaling para Vídeos',
+    descricao: `Upscalling Videos é uma aplicação local desenvolvida em Python para automatizar o fluxo de preparação, processamento e envio de vídeos em lote.
 
+O projeto foi criado para resolver uma operação repetitiva de forma mais rápida, organizada e confiável, oferecendo uma interface web moderna, execução local sem dependências externas de servidor e uma experiência de uso próxima a um aplicativo desktop. A solução permite cadastrar múltiplos vídeos de uma vez, acompanhar o status de cada item em tempo real e reaproveitar apenas os registros com falha.
+
+O backend recebe os links informados, baixa os vídeos, aplica um processamento padronizado com FFmpeg, extrai dados complementares por scraping e realiza o envio final para canais do Telegram configurados. Todo o fluxo é persistido em SQLite, com histórico visual, ordenação por atualização e suporte a reprocessamento individual.
+
+Do ponto de vista técnico, o projeto utiliza FastAPI para expor a API local, SQLAlchemy para persistência, Pydantic para validação, yt-dlp para download de mídia, FFmpeg para reencodificação e normalização dos arquivos, além de httpx e BeautifulSoup para extração de informações da página de origem.
+
+A interface foi construída com HTML, CSS e JavaScript puro, com foco em usabilidade, feedback visual e automação de ações — criação dinâmica de linhas, atualização automática do histórico e encerramento completo da aplicação pela própria interface.
+
+Competências demonstradas no projeto:
+  · Arquitetura backend/frontend desacoplada
+  · Automação de processamento de mídia
+  · Integração com APIs externas e scraping
+  · Persistência local com banco relacional
+  · Tratamento de erros e reprocessamento
+  · Interface responsiva, animada e sem exposição de terminal ao usuário final`,
+    imagens: [
+      'Imagens/Upscalling Videos/UpscallingVideos1.png',
+      'Imagens/Upscalling Videos/UpscallingVideos2.png',
+      'Imagens/Upscalling Videos/UpscallingVideos3.png',
+      'Imagens/Upscalling Videos/UpscallingVideos4.png',
+      'Imagens/Upscalling Videos/UpscallingVideos5.png',
+      'Imagens/Upscalling Videos/UpscallingVideos6.png',
+      'Imagens/Upscalling Videos/UpscallingVideos7.png'
+    ],
+    data: '24/03/2026',
+    linguagens: "HTML, CSS, JS, PYTHON, SQL, VBScript, Batch",
+    github: 'https://github.com/GabrielLima-BD/upscalling.videos-prt/tree/main',
   },
-    {
-    titulo: 'App de Upscaling para Videos',
-    descricao: '',
-    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
-    data: '...',
-    linguagens: '...',
-    github: '...',
-    site:   '...'
-  },
-    {
+  {
     titulo: "Linktree",
-    descricao:  "O Linktree é uma página web moderna criada para centralizar e destacar os principais links de portfólio, redes sociais e contato profissional. Com design responsivo, animações e alternância de tema claro/escuro, o projeto oferece uma experiência visual elegante e adaptável a qualquer dispositivo, permitindo fácil personalização dos links e integração de ícones e foto de perfil. O código é modular, utiliza HTML5, CSS3 e JavaScript, e está pronto para expansão, sendo ideal para profissionais que busquem consolidar sua presença digital de forma prática e sofisticada.",
+    descricao: `Página web moderna criada para centralizar e destacar os principais links de portfólio, redes sociais e contato profissional.
+
+Com design responsivo, animações fluidas e alternância de tema claro/escuro, o projeto oferece uma experiência visual elegante e adaptável a qualquer dispositivo. Permite fácil personalização dos links, integração de ícones e foto de perfil.
+
+O código é modular, desenvolvido com HTML5, CSS3 e JavaScript puro, e está pronto para expansão — ideal para profissionais que buscam consolidar sua presença digital de forma prática e sofisticada.`,
     imagens: [
       "Imagens/Linktree/Linktree1.png",
       "Imagens/Linktree/Linktree2.png",
       "Imagens/Linktree/Linktree3.png",
-      "Imagens/Linktree/Linktree4.png",      
+      "Imagens/Linktree/Linktree4.png",
     ],
     data: "09/2025",
     linguagens: "HTML, CSS, JS",
@@ -663,7 +669,7 @@ const projetos = [
     data: '...',
     linguagens: '...',
     github: '...',
-    site:   '...'
+    site: '...'
   }
 ];
 
@@ -728,21 +734,29 @@ function trocarImagemCarrossel(sentido = 1) {
 
 function iniciarCarrosselAuto() {
   if (carrosselInterval) clearInterval(carrosselInterval);
-
-  // Se o atual for vídeo, não inicia auto
   if (carrosselProjeto && isVideoSlide(carrosselProjeto.imagens[carrosselIndex])) return;
 
   carrosselInterval = setInterval(() => {
     trocarImagemCarrossel(1);
-    // Se o próximo for vídeo, para o auto
     if (carrosselProjeto && isVideoSlide(carrosselProjeto.imagens[(carrosselIndex + 1) % carrosselProjeto.imagens.length])) {
       clearInterval(carrosselInterval);
     }
-  }, 10000); // 10s
+  }, 10000);
 }
 
 function reiniciarCarrosselAuto() {
   iniciarCarrosselAuto();
+}
+
+// ── Função auxiliar: converte \n em <br> para renderizar no HTML ──
+function descricaoParaHTML(texto) {
+  if (!texto) return '';
+  // Escapa caracteres HTML para segurança, depois converte \n em <br>
+  return texto
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\n/g, '<br>');
 }
 
 // Abertura do modal via cards
@@ -753,8 +767,8 @@ document.querySelectorAll('.link-projeto').forEach((card) => {
     const projetoDiv = this.querySelector('[data-projeto]');
     if (!projetoDiv) return;
 
-    const idx   = projetoDiv.getAttribute('data-projeto');
-    const proj  = projetos[idx];
+    const idx  = projetoDiv.getAttribute('data-projeto');
+    const proj = projetos[idx];
     if (!proj) return;
 
     carrosselIndex   = 0;
@@ -762,16 +776,18 @@ document.querySelectorAll('.link-projeto').forEach((card) => {
 
     mostrarSlideCarrossel(carrosselIndex);
 
-    document.getElementById('segundatela-titulo').textContent      = proj.titulo;
-    document.getElementById('segundatela-descricoes').textContent  = proj.descricao;
-    document.getElementById('segundatela-infodata').textContent    = proj.data;
-    document.getElementById('segundatela-linguagens').textContent  = proj.linguagens;
+    document.getElementById('segundatela-titulo').textContent   = proj.titulo;
+    document.getElementById('segundatela-infodata').textContent = proj.data;
+    document.getElementById('segundatela-linguagens').textContent = proj.linguagens;
+
+    // ── CORREÇÃO: usa innerHTML + descricaoParaHTML para respeitar as quebras de linha ──
+    document.getElementById('segundatela-descricoes').innerHTML = descricaoParaHTML(proj.descricao);
 
     const githubBtn = document.getElementById('modal-github');
     const siteBtn   = document.getElementById('modal-site');
 
     if (githubBtn) {
-      if (proj.github) { githubBtn.style.display = '';   githubBtn.href = proj.github; }
+      if (proj.github) { githubBtn.style.display = '';     githubBtn.href = proj.github; }
       else             { githubBtn.style.display = 'none'; }
     }
     if (siteBtn) {
@@ -807,7 +823,7 @@ if (modalVideo) {
   };
 }
 
-// Fechar modal (sem duplicar listeners globais)
+// Fechar modal
 const fecharBtn = document.getElementById('segundatela-fechar');
 if (fecharBtn) {
   fecharBtn.addEventListener('click', () => {
@@ -825,10 +841,3 @@ if (modalGlobal) {
     }
   });
 }
-
-// (mantido comentado)
-// if (homeSection) {
-//   const rect = homeSection.getBoundingClientRect();
-//   const inView = rect.bottom > 0 && rect.top < window.innerHeight;
-//   setParticlesPaused(!inView);
-// }

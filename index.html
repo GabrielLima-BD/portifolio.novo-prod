@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="pt-br">
 
   <head>
@@ -296,15 +296,28 @@
 
       </section>
 
-      <!-- segunda tela de cada card dos projetos -->
+      <!-- ============================================================
+           MODAL DE PROJETO — estrutura corrigida para responsividade
+           e scroll interno na descrição
+           ============================================================ -->
       <div class="segundatela-projetos" id="segundatela-projetos" style="display: none;">
+
+        <!-- Backdrop com blur -->
         <div class="segundatela-backdrop"></div>
+
+        <!-- Caixa central do modal -->
         <div class="segundatela-conteudo">
+
+          <!-- Botão fechar -->
           <span class="segundatela-fechar" id="segundatela-fechar">✖</span>
+
+          <!-- Imagem / Vídeo do projeto -->
           <div class="segundatela-carrossel">
-              <img class="segundatela-carrossel-img" id="modal-img" src="" alt="Imagem do projeto">
-              <video class="segundatela-carrossel-img" id="modal-video" style="display:none;max-width:100%;border-radius:12px;" controls></video>
+            <img class="segundatela-carrossel-img" id="modal-img" src="" alt="Imagem do projeto">
+            <video class="segundatela-carrossel-img" id="modal-video" style="display:none;" controls></video>
           </div>
+
+          <!-- Linha de metadados: data · linguagens · link -->
           <div class="segundatela-infos-row">
             <div class="segundatela-infodata" id="segundatela-infodata"></div>
             <div class="segundatela-linguagens" id="segundatela-linguagens"></div>
@@ -313,14 +326,21 @@
               <a href="#" target="_blank" id="modal-site">Site</a>
             </div>
           </div>
-          <div class="segundatela-descricao">
-            <h2 id="segundatela-titulo"></h2>
-            <p id="segundatela-descricoes"></p>
+
+          <!-- Divisor decorativo -->
+          <hr class="segundatela-divisor">
+
+          <!-- Bloco de descrição com título centralizado e caixa scrollável -->
+          <div class="segundatela-descricao-wrapper">
+            <h2 class="segundatela-descricao-titulo" id="segundatela-titulo"></h2>
+            <div class="segundatela-descricao-caixa">
+              <p id="segundatela-descricoes"></p>
+            </div>
           </div>
+
         </div>
       </div>
-
-
+      <!-- fim modal de projeto -->
 
 
 
