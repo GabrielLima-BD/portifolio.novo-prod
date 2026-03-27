@@ -61,6 +61,45 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function inicializarLazyLoadingProjetos() {
+  const imagensLazy = document.querySelectorAll('img[data-src]');
+  if (!imagensLazy.length) return;
+
+  const carregarImagem = (img) => {
+    const src = img.getAttribute('data-src');
+    if (!src || img.dataset.lazyLoaded === 'true') return;
+
+    img.src = src;
+    img.dataset.lazyLoaded = 'true';
+    img.removeAttribute('data-src');
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        carregarImagem(entry.target);
+        obs.unobserve(entry.target);
+      });
+    }, {
+      root: null,
+      rootMargin: '220px 0px',
+      threshold: 0.01,
+    });
+
+    imagensLazy.forEach((img) => observer.observe(img));
+    return;
+  }
+
+  imagensLazy.forEach(carregarImagem);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', inicializarLazyLoadingProjetos);
+} else {
+  inicializarLazyLoadingProjetos();
+}
+
 // ============================================================================
 // SEÇÃO SOBRE – Carrossel
 // ============================================================================
@@ -548,9 +587,9 @@ Foram criadas duas telas interativas com foco em KPIs estratégicos — faturame
 
 O projeto demonstra domínio de análise de dados, visualização, storytelling com dados e suporte à tomada de decisão baseada em evidências.`,
     imagens: [
-      "Imagens/Dashboard Store/DashPowerBi1.png",
-      "Imagens/Dashboard Store/DashPowerBi2.png",
-      "Imagens/Dashboard Store/VideoDash.mp4"
+      "Imagens/webp/Dashboard Store/DashPowerBi1.webp",
+      "Imagens/webp/Dashboard Store/DashPowerBi2.webp",
+      "Imagens/webp/Dashboard Store/VideoDash.mp4"
     ],
     data: "Feito em 02/2026",
     linguagens: "Power BI, DAX, SQL",
@@ -559,14 +598,25 @@ O projeto demonstra domínio de análise de dados, visualização, storytelling 
   {
     titulo: 'Sis. Biblioteca',
     descricao: '...',
-    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
-    data: '...',
-    linguagens: '...'
+    imagens: [
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca2.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca3.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca4.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca5.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca6.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca7.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca8.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca9.webp',
+      'Imagens/webp/Sis Biblioteca/SisBiblioteca10.webp'
+    ],
+    data: '10/2025',
+    linguagens: "JAVA SCRIPT, NODE/EXPRESS, HTML, CSS, JSON, POSTGRESQL"
   },
   {
     titulo: 'Project Fraud',
     descricao: '',
-    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
+    imagens: ['Imagens/webp/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.webp'],
     data: '...',
     linguagens: '...'
   },
@@ -580,13 +630,13 @@ O layout utiliza CSS Grid e Flexbox, sistema de temas com variáveis CSS (dark/l
 
 Totalmente responsivo e com abordagem mobile-first, o projeto oferece uma experiência consistente em diferentes dispositivos. Desenvolvido com HTML5, CSS3 e JavaScript moderno, demonstra domínio de JavaScript vanilla, arquitetura CSS profissional e atenção minuciosa à experiência do usuário.`,
     imagens: [
-      "Imagens/Cafe Borcelles/Borcelles1.png",
-      "Imagens/Cafe Borcelles/Borcelles2.png",
-      "Imagens/Cafe Borcelles/Borcelles3.png",
-      "Imagens/Cafe Borcelles/Borcelles4.png",
-      "Imagens/Cafe Borcelles/Borcelles5.png",
-      "Imagens/Cafe Borcelles/Borcelles6.png",
-      "Imagens/Cafe Borcelles/Borcelles7.png"
+      "Imagens/webp/Cafe Borcelles/Borcelles1.webp",
+      "Imagens/webp/Cafe Borcelles/Borcelles2.webp",
+      "Imagens/webp/Cafe Borcelles/Borcelles3.webp",
+      "Imagens/webp/Cafe Borcelles/Borcelles4.webp",
+      "Imagens/webp/Cafe Borcelles/Borcelles5.webp",
+      "Imagens/webp/Cafe Borcelles/Borcelles6.webp",
+      "Imagens/webp/Cafe Borcelles/Borcelles7.webp"
     ],
     data: "Feito em 08/2025",
     linguagens: "HTML, CSS, JS",
@@ -603,10 +653,10 @@ O backend atua como API e proxy, com fallback mock para simulação de frete qua
 
 O projeto conta com infraestrutura pronta para Azure, deploy automatizado via GitHub Actions e arquivos Bicep para provisionamento em produção. Demonstra domínio em integrações externas, arquitetura backend, automação de deploy e preparação para ambientes reais de produção.`,
     imagens: [
-      "Imagens/ApiCorreios/ApiCorreios1.png",
-      "Imagens/ApiCorreios/ApiCorreios2.png",
-      "Imagens/ApiCorreios/ApiCorreios3.png",
-      "Imagens/ApiCorreios/ApiCorreios4.png"
+      "Imagens/webp/ApiCorreios/ApiCorreios1.webp",
+      "Imagens/webp/ApiCorreios/ApiCorreios2.webp",
+      "Imagens/webp/ApiCorreios/ApiCorreios3.webp",
+      "Imagens/webp/ApiCorreios/ApiCorreios4.webp"
     ],
     data: "Feito em 12/2025",
     linguagens: "HTML, CSS, JS, BICEP, NODE.JS, EXPRESS",
@@ -632,13 +682,13 @@ Competências demonstradas no projeto:
   · Tratamento de erros e reprocessamento
   · Interface responsiva, animada e sem exposição de terminal ao usuário final`,
     imagens: [
-      'Imagens/Upscalling Videos/UpscallingVideos1.png',
-      'Imagens/Upscalling Videos/UpscallingVideos2.png',
-      'Imagens/Upscalling Videos/UpscallingVideos3.png',
-      'Imagens/Upscalling Videos/UpscallingVideos4.png',
-      'Imagens/Upscalling Videos/UpscallingVideos5.png',
-      'Imagens/Upscalling Videos/UpscallingVideos6.png',
-      'Imagens/Upscalling Videos/UpscallingVideos7.png'
+      'Imagens/webp/Upscalling Videos/UpscallingVideos1.webp',
+      'Imagens/webp/Upscalling Videos/UpscallingVideos2.webp',
+      'Imagens/webp/Upscalling Videos/UpscallingVideos3.webp',
+      'Imagens/webp/Upscalling Videos/UpscallingVideos4.webp',
+      'Imagens/webp/Upscalling Videos/UpscallingVideos5.webp',
+      'Imagens/webp/Upscalling Videos/UpscallingVideos6.webp',
+      'Imagens/webp/Upscalling Videos/UpscallingVideos7.webp'
     ],
     data: '24/03/2026',
     linguagens: "HTML, CSS, JS, PYTHON, SQL, VBScript, Batch",
@@ -652,10 +702,10 @@ Com design responsivo, animações fluidas e alternância de tema claro/escuro, 
 
 O código é modular, desenvolvido com HTML5, CSS3 e JavaScript puro, e está pronto para expansão — ideal para profissionais que buscam consolidar sua presença digital de forma prática e sofisticada.`,
     imagens: [
-      "Imagens/Linktree/Linktree1.png",
-      "Imagens/Linktree/Linktree2.png",
-      "Imagens/Linktree/Linktree3.png",
-      "Imagens/Linktree/Linktree4.png",
+      "Imagens/webp/Linktree/Linktree1.webp",
+      "Imagens/webp/Linktree/Linktree2.webp",
+      "Imagens/webp/Linktree/Linktree3.webp",
+      "Imagens/webp/Linktree/Linktree4.webp",
     ],
     data: "09/2025",
     linguagens: "HTML, CSS, JS",
@@ -665,7 +715,7 @@ O código é modular, desenvolvido com HTML5, CSS3 e JavaScript puro, e está pr
   {
     titulo: 'APP Para Costureira',
     descricao: '',
-    imagens: ['Imagens/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.png'],
+    imagens: ['Imagens/webp/Foto Projetos Em Desenvolvimento/EmDesenvolvimento.webp'],
     data: '...',
     linguagens: '...',
     github: '...',

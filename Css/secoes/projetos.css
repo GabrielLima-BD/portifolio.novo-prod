@@ -71,6 +71,8 @@
   overflow: hidden;
   position: relative;
   aspect-ratio: 16 / 10;
+  content-visibility: auto;
+  contain-intrinsic-size: 280px 175px;
 }
 
 .linha-projeto-store-powerbi,
@@ -270,9 +272,9 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 340px;
+  max-height: 560px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 0 2px 16px rgba(80, 0, 160, 0.14);
   display: block;
 }
