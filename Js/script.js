@@ -595,9 +595,23 @@ O projeto demonstra domínio de análise de dados, visualização, storytelling 
     linguagens: "Power BI, DAX, SQL",
     github: "https://github.com/GabrielLima-BD/store.powerbi-prt",
   },
-  {
-    titulo: 'Sis. Biblioteca',
-    descricao: '...',
+{
+  titulo: 'Sis. Biblioteca',
+  descricao: `Sistema completo de gerenciamento de biblioteca desenvolvido com arquitetura separada entre frontend e backend, integrações com Supabase e foco em operação prática, rastreabilidade e experiência de uso clara.
+
+    O projeto cobre os principais fluxos de uma biblioteca real: cadastro e gestão de clientes e livros, criação e acompanhamento de reservas, controle de multas e painel analítico com métricas agregadas. Cada módulo foi pensado para operar de forma independente, com estados de busca organizados, navegação por domínio de negócio e leitura rápida para uso cotidiano.
+
+    No backend, a API REST em Node.js com Express centraliza todas as regras de negócio — controle de estoque, fluxo de reservas com finalização e cancelamento, baixa de multas e agregações para o dashboard. O frontend consome a API por um cliente HTTP único, sem lógica de domínio espalhada pela interface.
+
+    A persistência é feita via Supabase, com variáveis de ambiente controladas, CORS configurado por origem permitida e logs centralizados com Morgan. O projeto inclui script de seed incremental, atalho de inicialização para Windows e separação clara entre camadas para facilitar manutenção e evolução futura.
+
+    Competências demonstradas no projeto:
+      · Arquitetura REST com separação real entre frontend e backend
+      · CRUD completo com buscas por múltiplos filtros em todos os domínios
+      · Regras de negócio aplicadas no backend — estoque, reservas e multas
+      · Dashboard executivo com KPIs, gráficos e rankings agregados
+      · Integração com Supabase e configuração segura de ambiente
+      · Estrutura organizada para portfólio, avaliação técnica e evolução incremental`,
     imagens: [
       'Imagens/webp/Sis Biblioteca/SisBiblioteca.webp',
       'Imagens/webp/Sis Biblioteca/SisBiblioteca2.webp',
@@ -611,7 +625,7 @@ O projeto demonstra domínio de análise de dados, visualização, storytelling 
       'Imagens/webp/Sis Biblioteca/SisBiblioteca10.webp'
     ],
     data: '10/2025',
-    linguagens: "JAVA SCRIPT, NODE/EXPRESS, HTML, CSS, JSON, POSTGRESQL"
+    linguagens: "JAVASCRIPT, NODE/EXPRESS, HTML, CSS, JSON, POSTGRESQL"
   },
   {
     titulo: 'Project Fraud',
