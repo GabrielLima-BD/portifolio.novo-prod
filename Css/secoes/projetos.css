@@ -219,7 +219,8 @@
   box-sizing: border-box;
   margin: auto;
   /* Limita a altura ao viewport e rola internamente se precisar */
-  max-height: calc(100vh - 2rem);
+  max-height: min(92vh, 860px);
+  min-height: min(82vh, 760px);
   overflow: hidden;
 }
 
@@ -266,17 +267,45 @@
   border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
+  min-height: clamp(180px, 30vh, 300px);
+  max-height: clamp(220px, 35vh, 340px);
+}
+
+.segundatela-carrossel.is-image {
+  min-height: clamp(180px, 30vh, 300px);
+  max-height: clamp(220px, 35vh, 340px);
+}
+
+.segundatela-carrossel.is-video {
+  min-height: clamp(200px, 32vh, 320px);
+  max-height: clamp(240px, 38vh, 360px);
 }
 
 .segundatela-carrossel-img {
   width: 100%;
   max-width: 100%;
-  height: auto;
-  max-height: 560px;
+  height: clamp(180px, 35vh, 340px);
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 2px 16px rgba(80, 0, 160, 0.14);
   display: block;
+}
+
+#modal-img {
+  object-fit: cover;
+}
+
+#modal-video {
+  object-fit: contain;
+  background: #0d0d0d;
+}
+
+.segundatela-carrossel.is-video #modal-video {
+  height: clamp(200px, 38vh, 360px);
+}
+
+.segundatela-carrossel.is-image #modal-img {
+  height: clamp(180px, 35vh, 340px);
 }
 
 /* Linha de infos: data + linguagens + links */
@@ -337,6 +366,7 @@
   flex-direction: column;
   gap: 0.6rem;
   min-height: 0; /* permite que o flex encolha */
+  flex: 1 1 auto;
 }
 
 .segundatela-descricao-titulo {
@@ -354,8 +384,9 @@
   border: 1px solid rgba(162, 89, 255, 0.15);
   border-radius: 10px;
   padding: 1rem 1.1rem;
-  /* Altura fixa com scroll — ajuste max-height conforme preferir */
-  max-height: 200px;
+  min-height: clamp(230px, 34vh, 360px);
+  height: 100%;
+  max-height: none;
   overflow-y: auto;
   line-height: 1.7;
   font-size: 0.95rem;
@@ -399,11 +430,22 @@
     padding: 1.4rem 1.1rem 1.4rem;
     border-radius: 1rem;
     max-height: calc(100vh - 1rem);
+    min-height: calc(100vh - 1rem);
     gap: 1rem;
   }
 
-  .segundatela-carrossel-img {
+  .segundatela-carrossel {
+    min-height: 170px;
     max-height: 220px;
+  }
+
+  .segundatela-carrossel.is-video {
+    min-height: 180px;
+    max-height: 230px;
+  }
+
+  .segundatela-carrossel-img {
+    height: 220px;
   }
 
   .segundatela-infos-row {
@@ -423,7 +465,8 @@
 
   .segundatela-descricao-caixa {
     font-size: 0.88rem;
-    max-height: 160px;
+    min-height: 260px;
+    max-height: none;
   }
 
   .segundatela-links a {
@@ -438,11 +481,22 @@
     border-radius: 0.85rem;
   }
 
-  .segundatela-carrossel-img {
+  .segundatela-carrossel {
+    min-height: 150px;
     max-height: 180px;
   }
 
+  .segundatela-carrossel.is-video {
+    min-height: 160px;
+    max-height: 200px;
+  }
+
+  .segundatela-carrossel-img {
+    height: 180px;
+  }
+
   .segundatela-descricao-caixa {
-    max-height: 140px;
+    min-height: 250px;
+    max-height: none;
   }
 }

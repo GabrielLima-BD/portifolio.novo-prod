@@ -744,6 +744,13 @@ let carrosselInterval= null;
 
 const modalImg   = document.getElementById('modal-img');
 const modalVideo = document.getElementById('modal-video');
+const modalCarrossel = document.querySelector('.segundatela-carrossel');
+
+function setModalMediaMode(isVideo) {
+  if (!modalCarrossel) return;
+  modalCarrossel.classList.toggle('is-video', isVideo);
+  modalCarrossel.classList.toggle('is-image', !isVideo);
+}
 
 function isVideoSlide(slide) {
   return typeof slide === 'string' && /\.(mp4|webm|ogg)$/i.test(slide);
@@ -752,8 +759,11 @@ function isVideoSlide(slide) {
 function mostrarSlideCarrossel(idx) {
   if (!carrosselProjeto || !carrosselProjeto.imagens) return;
   const slide = carrosselProjeto.imagens[idx];
+  const isVideo = isVideoSlide(slide);
 
-  if (isVideoSlide(slide)) {
+  setModalMediaMode(isVideo);
+
+  if (isVideo) {
     if (modalImg)   modalImg.style.display   = 'none';
     if (modalVideo) {
       modalVideo.style.display = 'block';
@@ -811,6 +821,8 @@ function iniciarCarrosselAuto() {
 function reiniciarCarrosselAuto() {
   iniciarCarrosselAuto();
 }
+
+setModalMediaMode(false);
 
 // ── Função auxiliar: converte \n em <br> para renderizar no HTML ──
 function descricaoParaHTML(texto) {
